@@ -1,0 +1,256 @@
+/* Wrapper that fills the area behind the footer's rounded top corners with cream,
+   matching the FAQ section above. The footer's curve cuts into this wrapper, so cream
+   is what's revealed at the corners regardless of body or page background. */
+.footerWrapper {
+    background: #f5f1eb;
+}
+
+.footer {
+    background-color: #0f141a;
+    color: white;
+    padding: 60px 0 30px;
+    border-radius: 60px 60px 0 0;
+}
+
+.container {
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Top Bar */
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.footerLogo {
+    height: auto;
+    width: 170px;
+    display: block;
+}
+
+.logoLink {
+    text-decoration: none;
+    display: block;
+}
+
+/* Links Grid */
+.linksGrid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.column {
+    min-width: 180px;
+}
+
+.column h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: white;
+    font-family: var(--font-title), sans-serif;
+}
+
+.column a {
+    position: relative;
+    display: table;
+    /* Shrink-wrap to text width */
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.column a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #00d1ff;
+    /* Neon Blue */
+    transition: width 0.3s ease;
+}
+
+.column a:hover {
+    color: #00d1ff;
+}
+
+.column a:hover::after {
+    width: 100%;
+}
+
+.phoneNumbers {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 12px;
+}
+
+.phoneNumbers a {
+    display: table !important;
+    /* Changed from inline-block for precise underline width */
+    margin-bottom: 0 !important;
+}
+
+.phoneNumbers span {
+    color: #a1a1aa;
+    margin: 0 8px;
+}
+
+.contactInfo a {
+    margin-bottom: 12px;
+}
+
+.column p {
+    color: #a1a1aa;
+    font-size: 14px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.socialCol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.socialLink {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0 !important;
+    text-decoration: none !important;
+}
+
+.address {
+    margin-top: 16px;
+    font-size: 14px !important;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* Back to Top */
+.backToTop {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 60px;
+}
+
+.backToTop button {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a1a1aa;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.backToTop button:hover {
+    color: white;
+    background: #00d1ff;
+    border-color: #00d1ff;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 209, 255, 0.4);
+}
+
+/* Bottom Bar */
+.bottomBar {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 40px;
+}
+
+.splitRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.legalLinks {
+    display: flex;
+    gap: 20px;
+}
+
+.legalLinks a {
+    position: relative;
+    color: #a1a1aa;
+    font-size: 12px;
+    text-decoration: none;
+    margin-bottom: 0px;
+    transition: color 0.3s ease;
+}
+
+.legalLinks a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #00d1ff;
+    transition: width 0.3s ease;
+}
+
+.legalLinks a:hover {
+    color: #00d1ff;
+}
+
+.legalLinks a:hover::after {
+    width: 100%;
+}
+
+.copyright {
+    color: #71717a;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.accent {
+    color: #00d1ff;
+    font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+    .linksGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    .splitRow {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .legalLinks {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .linksGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .topBar {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+}

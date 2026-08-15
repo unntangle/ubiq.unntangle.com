@@ -1,0 +1,722 @@
+/* ============================================================
+ * uBIQ - Solutions page styles (light theme, purple/neutral).
+ * Alternating image/text rows, grey icon badges, and a unique
+ * animated motif per solution. Overrides global section/heading
+ * defaults explicitly.
+ * ============================================================ */
+
+.section {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 92px 24px;
+    position: relative;
+}
+
+.inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 20px;
+    padding: 7px 16px;
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    border-radius: 100px;
+    background: rgba(139, 92, 246, 0.06);
+}
+
+/* ---------------- HERO (rounded image card with overlaid text) ---------------- */
+.hero {
+    position: relative;
+    width: auto;
+    margin: 92px 24px 24px;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 96px 48px;
+    border-radius: 32px;
+    overflow: hidden;
+    background: #1a1030;
+}
+
+.heroImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+.heroScrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(20, 12, 44, 0.62) 0%, rgba(20, 12, 44, 0.38) 42%, rgba(20, 12, 44, 0.72) 100%),
+        radial-gradient(1100px 600px at 50% 38%, rgba(20, 12, 44, 0.18), rgba(20, 12, 44, 0.66) 100%);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heroContent .eyebrow {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(6px);
+}
+.heroContent .heroTitle { color: #ffffff; }
+.heroContent .heroAccent { color: #ffe6a6; }
+.heroContent .heroLead { color: rgba(255, 255, 255, 0.9); margin-bottom: 0; }
+
+.heroGrid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 24%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 24%, #000 30%, transparent 75%);
+    pointer-events: none;
+}
+
+.heroInner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heroTitle {
+    font-family: var(--font-title), sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: #111418;
+    margin: 0 0 22px;
+}
+
+.heroAccent {
+    color: #7c3aed;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.heroLead {
+    font-size: clamp(1rem, 1.5vw, 1.18rem);
+    line-height: 1.65;
+    color: #5a626b;
+    max-width: 680px;
+    margin: 0 0 30px;
+}
+
+.quickNav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 9px;
+    max-width: 760px;
+}
+
+.quickChip {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #3a4149;
+    padding: 8px 16px;
+    border-radius: 100px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.quickChip:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    background: rgba(139, 92, 246, 0.06);
+    color: #0a0f14;
+    transform: translateY(-2px);
+}
+
+.heroGridLayout {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 52px;
+    text-align: left;
+}
+
+.heroText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.heroText .heroLead {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 560px;
+}
+
+.heroText .quickNav {
+    justify-content: flex-start;
+    max-width: 580px;
+}
+
+.heroImageWrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    margin: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(20, 10, 40, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.heroImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ---------------- GROUPS ---------------- */
+.group {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 64px 24px;
+}
+
+.group:nth-of-type(odd) { background: #ffffff; }
+.group:nth-of-type(even) { background: #f8f8f8; }
+
+.groupHead {
+    max-width: 720px;
+    margin: 0 auto 52px;
+    text-align: center;
+}
+
+.groupKicker {
+    display: inline-block;
+    font-family: var(--font-title), sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #111418;
+    margin-bottom: 12px;
+}
+
+.groupIntro {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #5a626b;
+    margin: 0;
+}
+
+/* ---------------- solution row ---------------- */
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 56px;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 0;
+    scroll-margin-top: 100px;
+}
+
+.row + .row { border-top: 1px solid rgba(0, 0, 0, 0.06); }
+
+.reverse .rowText { order: 2; }
+.reverse .visual { order: 1; }
+
+.rowText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.rowIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    background: var(--ubiq-icon-bg);
+    color: var(--ubiq-icon);
+    margin-bottom: 18px;
+}
+
+.rowKicker {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #8a929b;
+    margin-bottom: 10px;
+}
+
+.rowTitle {
+    font-family: var(--font-title), sans-serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    color: #111418;
+    margin: 0 0 14px;
+}
+
+.rowDesc {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #5a626b;
+    margin: 0 0 20px;
+}
+
+.rowFeatures {
+    list-style: none;
+    margin: 0 0 22px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rowFeatures li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.94rem;
+    line-height: 1.4;
+    color: #3a4149;
+}
+
+.check {
+    color: var(--ubiq-icon);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.rowTech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 26px;
+}
+
+.techTag {
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: #4a5159;
+    padding: 6px 13px;
+    border-radius: 100px;
+    background: #f4f2fb;
+    border: 1px solid rgba(139, 92, 246, 0.16);
+    white-space: nowrap;
+}
+
+.rowCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    border-radius: 100px;
+    background: #111111;
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.rowCta:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.28);
+}
+
+/* ---------------- visual frame ---------------- */
+.visual {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 26px 60px rgba(15, 23, 42, 0.16);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.visualImg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease;
+}
+
+.visual:hover .visualImg { transform: scale(1.04); }
+
+/* base motif layer */
+.motif {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ============================================================
+ * UNIQUE MOTIFS
+ * ============================================================ */
+
+/* 1) HUB — concentric rings radiating from a centre node */
+.mHub b {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.9);
+}
+.mHub i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transform: scale(0);
+    animation: hubRing 3s ease-out infinite;
+}
+.mHub i:nth-child(2) { animation-delay: 1s; }
+.mHub i:nth-child(3) { animation-delay: 2s; }
+@keyframes hubRing {
+    0% { transform: scale(0); opacity: 0.9; }
+    100% { transform: scale(4.6); opacity: 0; }
+}
+
+/* 2) GLOW — warm light dimming up and down */
+.mGlow {
+    background: radial-gradient(circle at 70% 35%, rgba(255, 214, 150, 0.6) 0%, rgba(255, 214, 150, 0) 55%);
+    mix-blend-mode: screen;
+    animation: glowDim 3.6s ease-in-out infinite;
+}
+@keyframes glowDim {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 1; }
+}
+
+/* 3) CLIMATE — warm <-> cool wash sweeping across */
+.mClimate {
+    background: linear-gradient(110deg,
+        rgba(255, 140, 80, 0.0) 0%,
+        rgba(255, 150, 90, 0.35) 30%,
+        rgba(120, 180, 255, 0.35) 60%,
+        rgba(120, 180, 255, 0.0) 90%);
+    background-size: 240% 100%;
+    mix-blend-mode: screen;
+    animation: climateSweep 7s ease-in-out infinite alternate;
+}
+@keyframes climateSweep {
+    0% { background-position: 0% 0; }
+    100% { background-position: 100% 0; }
+}
+
+/* 4) SHADE — a translucent shade drawing down then lifting */
+.mShade {
+    background: linear-gradient(180deg, rgba(20, 22, 30, 0.55) 0%, rgba(20, 22, 30, 0.32) 88%, rgba(20, 22, 30, 0) 100%);
+    transform-origin: top;
+    animation: shadeDraw 6s ease-in-out infinite;
+}
+@keyframes shadeDraw {
+    0%, 100% { transform: scaleY(0.06); }
+    45%, 70% { transform: scaleY(0.92); }
+}
+
+/* 5) EQ — audio equaliser bars along the bottom */
+.mEq {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 0 22px;
+}
+.mEq i {
+    width: 7px;
+    height: 18px;
+    border-radius: 100px;
+    background: linear-gradient(180deg, #c44fe0, #6e5bf2);
+    align-self: flex-end;
+    animation: eqBar 1.1s ease-in-out infinite;
+}
+.mEq i:nth-child(1) { animation-delay: 0s; }
+.mEq i:nth-child(2) { animation-delay: 0.18s; }
+.mEq i:nth-child(3) { animation-delay: 0.36s; }
+.mEq i:nth-child(4) { animation-delay: 0.12s; }
+.mEq i:nth-child(5) { animation-delay: 0.30s; }
+.mEq i:nth-child(6) { animation-delay: 0.06s; }
+.mEq i:nth-child(7) { animation-delay: 0.24s; }
+@keyframes eqBar {
+    0%, 100% { height: 16px; }
+    50% { height: 56px; }
+}
+
+/* 6) SCAN — a security scan line sweeping top to bottom */
+.mScan {
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0) 0%, rgba(139, 92, 246, 0.55) 50%, rgba(139, 92, 246, 0) 100%);
+    height: 26%;
+    bottom: auto;
+    animation: scanMove 3.4s linear infinite;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+}
+@keyframes scanMove {
+    0% { top: -26%; }
+    100% { top: 100%; }
+}
+
+/* 7) ENERGY — current flowing along a circuit path with a pulsing core */
+.mEnergy svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.energyTrack {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.28);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.energyFlow {
+    fill: none;
+    stroke: #c9b3ff;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 6px rgba(196, 79, 224, 0.9));
+    stroke-dasharray: 26 320;
+    animation: energyFlow 2.4s linear infinite;
+}
+@keyframes energyFlow {
+    0% { stroke-dashoffset: 346; }
+    100% { stroke-dashoffset: 0; }
+}
+.mEnergy b {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 0%, #c44fe0 70%);
+    box-shadow: 0 0 18px rgba(196, 79, 224, 0.9);
+    animation: energyCore 2s ease-in-out infinite;
+}
+@keyframes energyCore {
+    0%, 100% { transform: scale(0.7); opacity: 0.7; }
+    50% { transform: scale(1.15); opacity: 1; }
+}
+
+/* 8) WIFI — signal rings broadcasting from a node */
+.mWifi b {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 0%, #c44fe0 78%);
+    box-shadow: 0 0 16px rgba(196, 79, 224, 0.95);
+    animation: wifiCore 2s ease-in-out infinite;
+}
+@keyframes wifiCore {
+    0%, 100% { transform: scale(0.8); opacity: 0.85; }
+    50% { transform: scale(1.18); opacity: 1; }
+}
+.mWifi i {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(196, 79, 224, 0.85);
+    box-shadow: 0 0 12px rgba(196, 79, 224, 0.45);
+    transform: scale(0.2);
+    opacity: 0;
+    animation: wifiPulse 2.6s ease-out infinite;
+}
+.mWifi i:nth-child(2) { animation-delay: 0.65s; }
+.mWifi i:nth-child(3) { animation-delay: 1.3s; }
+@keyframes wifiPulse {
+    0% { transform: scale(0.2); opacity: 0.9; }
+    70% { opacity: 0.2; }
+    100% { transform: scale(3.8); opacity: 0; }
+}
+
+/* 9) WINDOWS — a grid of building windows lighting up in sequence */
+.mWindows {
+    display: grid;
+    grid-template-columns: repeat(4, 26px);
+    grid-auto-rows: 26px;
+    gap: 10px;
+    align-content: center;
+    justify-content: center;
+    padding-top: 8%;
+}
+.mWindows i {
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    animation: windowLight 3.2s ease-in-out infinite;
+}
+.mWindows i:nth-child(3n) { animation-delay: 0.4s; }
+.mWindows i:nth-child(3n+1) { animation-delay: 1.1s; }
+.mWindows i:nth-child(3n+2) { animation-delay: 1.8s; }
+.mWindows i:nth-child(even) { animation-duration: 3.8s; }
+@keyframes windowLight {
+    0%, 100% { background: rgba(255, 255, 255, 0.16); box-shadow: none; }
+    50% { background: rgba(255, 226, 150, 0.92); box-shadow: 0 0 14px rgba(255, 213, 128, 0.7); }
+}
+
+/* ---------------- CTA ---------------- */
+.ctaSection { background: #f8f8f8; }
+
+.ctaBand {
+    position: relative;
+    overflow: hidden;
+    max-width: 1120px;
+    margin: 0 auto;
+    border-radius: 28px;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    background: linear-gradient(160deg, #edeff3 0%, #f6f7f9 58%, #ffffff 100%);
+    padding: 64px 32px;
+    text-align: center;
+}
+
+.ctaTitle {
+    font-family: var(--font-title), sans-serif;
+    font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #111418;
+    margin: 0 0 14px;
+}
+
+.ctaText {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #5a626b;
+    max-width: 580px;
+    margin: 0 auto 28px;
+}
+
+.ctaActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+}
+
+.ctaPrimary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 26px;
+    border-radius: 100px;
+    background: #111111;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.ctaPrimary:hover { background: #000; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(15, 23, 42, 0.28); }
+
+.ctaSecondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 26px;
+    border-radius: 100px;
+    background: transparent;
+    border: 1px solid rgba(15, 23, 42, 0.2);
+    color: #111418;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+}
+.ctaSecondary:hover { border-color: var(--primary); background: rgba(139, 92, 246, 0.06); }
+
+/* ---------------- responsive ---------------- */
+@media (max-width: 900px) {
+    .hero { padding: 72px 28px; min-height: 460px; }
+}
+
+@media (max-width: 880px) {
+    .row {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 36px 0;
+    }
+    .reverse .rowText { order: 1; }
+    .reverse .visual { order: 2; }
+    .visual { aspect-ratio: 16 / 10; }
+}
+
+@media (max-width: 600px) {
+    .section { padding: 68px 18px; }
+    .hero { margin: 84px 16px 16px; padding: 56px 20px; min-height: 420px; border-radius: 22px; }
+    .group { padding: 48px 18px; }
+}
+
+/* ---------------- reduced motion ---------------- */
+@media (prefers-reduced-motion: reduce) {
+    .mHub i, .mGlow, .mClimate, .mShade, .mEq i, .mScan,
+    .energyFlow, .mEnergy b, .mWifi i, .mWifi b, .mWindows i, .visualImg {
+        animation: none !important;
+        transition: none !important;
+    }
+    .mShade { transform: scaleY(0.5); }
+}

@@ -1,0 +1,252 @@
+/* ============================================================
+ * uBIQ Future Living - interactive "day timeline".
+ * Sunrise -> night gradient rail with selectable stops, an
+ * auto-cycling stage, and a time-of-day scene orb.
+ * ============================================================ */
+
+.section {
+    width: 100%;
+    background: #f8f8f8;
+    display: block;
+    padding: 110px 24px;
+    box-sizing: border-box;
+}
+
+.inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.header {
+    max-width: 720px;
+    margin: 0 auto 52px;
+    text-align: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.title {
+    font-family: var(--font-title), sans-serif;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-title);
+    letter-spacing: -0.02em;
+    line-height: 1.14;
+    color: #111418;
+    margin: 0;
+}
+
+/* ---------------- day timeline rail ---------------- */
+.rail {
+    position: relative;
+    margin: 0 auto 26px;
+    max-width: 880px;
+}
+
+/* the "day" gradient line, sunrise -> night */
+.railLine {
+    position: absolute;
+    top: 23px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 3px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #ffc488 0%, #8fb6ef 36%, #bcc4d0 64%, #2b2f57 100%);
+    opacity: 0.55;
+}
+
+.stops {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stop {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.dot {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    color: #8a929b;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+    transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stop:hover .dot {
+    color: #3a4149;
+    border-color: rgba(0, 0, 0, 0.25);
+}
+
+.stopActive .dot {
+    transform: scale(1.16);
+    color: var(--dot);
+    border-color: var(--dot);
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--dot) 35%, transparent);
+}
+
+.stopTime {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #8a929b;
+    transition: color 0.3s ease;
+}
+
+.stopName {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #3a4149;
+    transition: color 0.3s ease;
+}
+
+.stopActive .stopTime { color: var(--dot); }
+.stopActive .stopName { color: #111418; }
+
+/* ---------------- stage ---------------- */
+.stage {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 26px;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.07);
+    overflow: hidden;
+    min-height: 280px;
+}
+
+.stageInner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 32px;
+    padding: 48px 52px;
+    min-height: 280px;
+    box-sizing: border-box;
+}
+
+.stageText {
+    display: flex;
+    flex-direction: column;
+}
+
+.stageMode {
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.stageLine {
+    font-family: var(--font-title), sans-serif;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    font-weight: var(--fw-title);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #111418;
+    margin: 0 0 16px;
+}
+
+.stageNote {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #5a626b;
+    margin: 0;
+    max-width: 420px;
+}
+
+/* ---------------- scene orb ---------------- */
+.orbWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 230px;
+}
+
+.orbHalo {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--hue2) 38%, transparent) 0%, transparent 68%);
+    filter: blur(8px);
+    pointer-events: none;
+}
+
+.orb {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 34% 30%, var(--hue1) 0%, var(--hue2) 92%);
+    box-shadow: 0 26px 60px rgba(15, 23, 42, 0.2), inset 0 2px 10px rgba(255, 255, 255, 0.35);
+}
+
+/* soft sheen on the orb */
+.orb::after {
+    content: '';
+    position: absolute;
+    top: 14%;
+    left: 18%;
+    width: 46%;
+    height: 36%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* ---------------- responsive ---------------- */
+@media (max-width: 760px) {
+    .section { padding: 76px 18px; }
+    .header { margin-bottom: 40px; }
+
+    .stopName { display: none; }
+    .railLine { top: 23px; }
+
+    .stageInner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 28px;
+        padding: 40px 26px;
+    }
+
+    .stageText { align-items: center; }
+    .stageNote { margin-left: auto; margin-right: auto; }
+
+    .orbWrap { order: -1; min-height: 180px; }
+    .orb { width: 168px; height: 168px; }
+    .orbHalo { width: 220px; height: 220px; }
+    .orb :global(svg) { width: 46px; height: 46px; }
+}
+
+@media (max-width: 420px) {
+    .dot { width: 40px; height: 40px; }
+    .stopTime { font-size: 0.64rem; }
+}

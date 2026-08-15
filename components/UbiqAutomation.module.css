@@ -1,0 +1,214 @@
+/* ============================================================
+ * uBIQ - Home automation domains (image-led) styles.
+ * Light theme, purple accent, faint lavender band to separate it
+ * from the plain-white Technologies section that follows.
+ * ============================================================ */
+
+.section {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 110px 24px;
+    background: linear-gradient(180deg, #ffffff 0%, #f6f3fe 100%);
+}
+
+.inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.head {
+    max-width: 760px;
+    margin: 0 auto 56px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.title {
+    font-family: var(--font-title), sans-serif;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-title);
+    letter-spacing: -0.02em;
+    line-height: 1.14;
+    color: #111418;
+    margin: 0 0 18px;
+}
+
+.accent {
+    background: var(--ubiq-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.sub {
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: #5a626b;
+    margin: 0;
+}
+
+/* ---------------- card grid ---------------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+@media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(139, 92, 246, 0.45);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+}
+
+.media {
+    position: relative;
+    height: 168px;
+    background-color: #ece8f6;
+    background-size: cover;
+    background-position: center;
+}
+
+.media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 20, 26, 0.34) 0%, transparent 58%);
+}
+
+.mediaIcon {
+    position: absolute;
+    left: 18px;
+    bottom: -20px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 20px rgba(2, 8, 23, 0.18);
+    color: var(--ubiq-icon);
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 30px 24px 24px;
+}
+
+.cardTitle {
+    font-family: var(--font-title), sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #111418;
+    margin: 0 0 9px;
+}
+
+.cardText {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #5a626b;
+    margin: 0 0 18px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: auto;
+}
+
+.tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #4a5159;
+    padding: 5px 11px;
+    border-radius: 100px;
+    background: #f4f2fb;
+    border: 1px solid rgba(139, 92, 246, 0.16);
+    white-space: nowrap;
+}
+
+/* ---------------- footer actions ---------------- */
+.foot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    margin-top: 48px;
+}
+
+.footCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    background: #111111;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.footCta:hover {
+    background: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.28);
+}
+
+.footLink {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footLink:hover { opacity: 0.7; text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 768px) {
+    .section { padding: 76px 18px; }
+    .head { margin-bottom: 40px; }
+}

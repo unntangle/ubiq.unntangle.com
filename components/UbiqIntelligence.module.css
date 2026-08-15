@@ -1,0 +1,370 @@
+/* ============================================================
+ * The uBIQ Intelligence Layer — LIGHT band.
+ * "Transformation" layout: muted traditional card  ->  gradient
+ * arrow node  ->  gradient-bordered, glowing uBIQ card.
+ * Purple theme; overrides global element selectors explicitly.
+ * ============================================================ */
+
+.section {
+    width: 100%;
+    background: #f8f8f8;
+    display: block;
+    padding: 110px 24px;
+    box-sizing: border-box;
+}
+
+.inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.header {
+    max-width: 760px;
+    margin: 0 auto 56px;
+    text-align: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.title {
+    font-family: var(--font-title), sans-serif;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-title);
+    letter-spacing: -0.02em;
+    line-height: 1.14;
+    color: #111418;
+    margin: 0 0 18px;
+}
+
+.accent {
+    background: var(--ubiq-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.subtitle {
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: #5a626b;
+    margin: 0;
+}
+
+/* ---------------- comparison grid ---------------- */
+.compare {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    align-items: stretch;
+}
+
+@media (max-width: 820px) {
+    .compare {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+/* ---------------- traditional (muted) card ---------------- */
+.cardMuted {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 22px;
+    padding: 38px 34px;
+}
+
+.iconMuted {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    background: #f1f1f4;
+    color: #9aa1a9;
+    margin-bottom: 22px;
+}
+
+.cardLabel {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #6b7480;
+    margin-bottom: 14px;
+}
+
+.cardLine {
+    font-family: var(--font-title), sans-serif;
+    font-size: clamp(1.55rem, 2.6vw, 1.95rem);
+    font-weight: var(--fw-title);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #9aa1a9;
+    margin: 0 0 14px;
+}
+
+.cardNote {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: #6b7480;
+    margin: 0;
+}
+
+/* ---------------- transform node (center) ---------------- */
+.transform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 26px;
+}
+
+.transformRing {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #8a929c;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.transformLabel {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #6b7480;
+    white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+    .transform {
+        padding: 10px 0;
+    }
+
+    .transformRing svg {
+        transform: rotate(90deg);
+    }
+}
+
+/* ---------------- uBIQ card (gradient border + glow) ---------------- */
+@property --beamAngle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.cardLiveWrap {
+    position: relative;
+    isolation: isolate;
+    padding: 2px;
+    border-radius: 24px;
+    background: rgba(2, 8, 23, 0.12);
+    box-shadow: 0 18px 50px rgba(110, 91, 242, 0.16);
+}
+
+/* Moving light "beam" that travels around the outline */
+.cardLiveWrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+        from var(--beamAngle),
+        transparent 0turn 0.6turn,
+        rgba(110, 91, 242, 0) 0.6turn,
+        #6e5bf2 0.8turn,
+        #c44fe0 0.95turn,
+        rgba(196, 79, 224, 0) 1turn
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    animation: beamSpin 3s linear infinite;
+}
+
+@keyframes beamSpin {
+    to { --beamAngle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cardLiveWrap { background: var(--ubiq-gradient); }
+    .cardLiveWrap::before { animation: none; }
+}
+
+.cardLive {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: linear-gradient(165deg, #fbf9ff 0%, #ffffff 62%);
+    border-radius: 22px;
+    padding: 38px 34px;
+}
+
+.liveTop {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 22px;
+}
+
+.iconLive {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    background: var(--ubiq-gradient);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(110, 91, 242, 0.32);
+}
+
+.livePill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 13px;
+    border-radius: 100px;
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--primary);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.livePulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.5);
+    animation: livePulse 1.9s ease-out infinite;
+}
+
+@keyframes livePulse {
+    0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(139, 92, 246, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+}
+
+.cardLabelLive {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 14px;
+}
+
+.cardLineLive {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-title), sans-serif;
+    font-size: clamp(1.55rem, 2.6vw, 1.95rem);
+    font-weight: var(--fw-title);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #111418;
+    margin: 0 0 14px;
+}
+
+.cardNoteLive {
+    position: relative;
+    z-index: 1;
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: #4a5159;
+    margin: 0;
+}
+
+/* ---------------- feature tag rows ---------------- */
+.tagRow {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.tagMuted,
+.tagLive {
+    font-size: 0.74rem;
+    font-weight: 500;
+    padding: 6px 13px;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
+.tagMuted {
+    color: #6b7480;
+    background: #f3f3f5;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.tagLive {
+    color: #5b3fb8;
+    background: #f3effe;
+    border: 1px solid rgba(139, 92, 246, 0.22);
+}
+
+.liveCta {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 26px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    transition: gap 0.25s ease;
+}
+
+.liveCta:hover {
+    gap: 13px;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 76px 18px;
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    .cardMuted,
+    .cardLive {
+        padding: 30px 24px;
+    }
+}

@@ -1,0 +1,820 @@
+/* uBIQ dedicated header — LIGHT glass, homepage-style mega menus.
+ * Mirrors unntangle.com: wide white rounded panel under the header,
+ * columns with dark underlined headers + cyan link titles + grey copy.
+ * Cyan = var(--primary). Dark pill CTA. */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+/* When a mega menu is open, force the solid glass backing even at the top. */
+.menuOpen {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.nav {
+    max-width: 1320px;
+    margin: 0 auto;
+    height: 76px;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+/* Brand lockup */
+.lockup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logo {
+    height: 42px;
+    width: auto;
+    /* Logo artwork is black-on-transparent — show it as-is on the light header. */
+    filter: none;
+}
+
+.byline {
+    align-self: flex-end;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: #8a93a0;
+    font-weight: 500;
+    padding-right: 2px;
+}
+
+/* ============================================================
+ * DESKTOP NAV + MEGA WRAP
+ * ============================================================ */
+.navWrap {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #3a4149;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color 0.25s ease, background 0.25s ease;
+    padding: 9px 14px;
+    border-radius: 100px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.link:hover,
+.triggerActive {
+    color: #0a0f14;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Current page indicator */
+.linkActive,
+.linkActive:hover {
+    color: var(--primary);
+    background: rgba(139, 92, 246, 0.12);
+}
+
+.chev {
+    opacity: 0.55;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.triggerActive .chev {
+    transform: rotate(180deg);
+    opacity: 1;
+    color: var(--primary);
+}
+
+/* ============================================================
+ * MEGA PANEL — light glassmorphism
+ * Centered with auto-margins (NOT translateX) so Framer Motion's
+ * inline transform on open can't shift it off-centre.
+ * ============================================================ */
+.megaWrap {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: min(1240px, calc(100vw - 40px));
+    z-index: 1001;
+}
+
+.mega {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(22px) saturate(140%);
+    -webkit-backdrop-filter: blur(22px) saturate(140%);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 26px;
+    box-shadow: 0 28px 70px -18px rgba(15, 23, 42, 0.22), 0 2px 8px rgba(15, 23, 42, 0.05);
+    padding: 24px 36px;
+}
+
+.mega::-webkit-scrollbar { width: 8px; }
+.mega::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.14); border-radius: 100px; }
+
+/* Width variants — smaller menus stay tidy & centred within the wrap. */
+.mega_solutions { width: 100%; }
+.mega_ecosystem { width: 100%; }
+.mega_technologies { width: 100%; }
+.mega_experiences { max-width: 820px; margin: 0 auto; }
+.mega_about { max-width: 760px; margin: 0 auto; }
+
+.megaHead {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.megaTitle {
+    font-family: var(--font-title), sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #111418;
+    margin: 0 0 6px;
+}
+
+.megaSub {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #5a626b;
+    margin: 0;
+    max-width: 640px;
+}
+
+/* ============================================================
+ * HOMEPAGE-STYLE LINK COLUMNS (Solutions, Experiences)
+ * ============================================================ */
+.cols {
+    display: flex;
+    gap: 44px;
+    flex-wrap: wrap;
+}
+
+.col {
+    flex: 1 1 0;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.colHead {
+    font-family: var(--font-title), sans-serif;
+    font-size: 1.12rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #111418;
+    padding-bottom: 14px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.menuLink {
+    display: block;
+    text-decoration: none;
+    padding: 12px 0;
+}
+
+.menuLinkTitle {
+    display: block;
+    font-size: 0.98rem;
+    font-weight: 500;
+    background: var(--ubiq-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+    transition: opacity 0.2s ease;
+}
+
+.menuLink:hover .menuLinkTitle {
+    opacity: 0.65;
+    text-decoration: underline;
+    text-decoration-color: var(--primary);
+    text-underline-offset: 3px;
+}
+
+.menuLinkDesc {
+    display: block;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: #5a626b;
+    max-width: 320px;
+}
+
+/* ============================================================
+ * ECOSYSTEM cards
+ * ============================================================ */
+.ecoGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.ecoCard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    text-decoration: none;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ecoCard:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 22px 46px rgba(2, 8, 23, 0.16);
+}
+
+/* Real-image header */
+.ecoHead {
+    position: relative;
+    height: 110px;
+    background-color: #e8edf1;
+    background-size: cover;
+    background-position: center;
+}
+
+.ecoHead::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 20, 26, 0.3) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+/* White icon badge overlapping the image/body seam */
+.ecoIcon {
+    position: absolute;
+    left: 22px;
+    bottom: -22px;
+    z-index: 2;
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 20px rgba(2, 8, 23, 0.18);
+    color: var(--ubiq-icon);
+}
+
+.ecoBody {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 30px 20px 18px;
+}
+
+.ecoCat {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #8a93a0;
+    margin-bottom: 6px;
+}
+
+.ecoName {
+    font-family: var(--font-title), sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #111418;
+    margin-bottom: 6px;
+}
+
+.ecoMark {
+    background: var(--ubiq-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.ecoDesc {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #5a626b;
+    margin-bottom: 10px;
+}
+
+.ecoFeatures {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 2px 0 12px;
+}
+
+.ecoFeature {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.84rem;
+    line-height: 1.4;
+    color: #3a4149;
+}
+
+.ecoCheck {
+    color: var(--ubiq-icon);
+    flex-shrink: 0;
+}
+
+.ecoLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--primary);
+    transition: gap 0.2s ease;
+}
+
+.ecoCard:hover .ecoLink {
+    gap: 11px;
+}
+
+/* ============================================================
+ * TECHNOLOGIES grid
+ * ============================================================ */
+.techWrap {
+    display: grid;
+    grid-template-columns: 268px 1fr;
+    gap: 28px;
+    min-height: 300px;
+}
+
+.techRail {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-right: 24px;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.techRailItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    text-align: left;
+    padding: 12px 14px;
+    border: none;
+    background: transparent;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #3a4149;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease;
+}
+
+.techRailItem:hover {
+    color: #0a0f14;
+}
+
+.techRailItemActive,
+.techRailItemActive:hover {
+    color: var(--primary);
+}
+
+.techRailChev {
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    flex-shrink: 0;
+}
+
+.techRailItemActive .techRailChev {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.techPane {
+    display: flex;
+    flex-direction: column;
+    padding-top: 4px;
+}
+
+.techPaneHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.techPaneTitle {
+    font-family: var(--font-title), sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #111418;
+    margin: 0;
+}
+
+.techCount {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--primary);
+    background: rgba(139, 92, 246, 0.1);
+    padding: 4px 11px;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
+.techPaneDesc {
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: #5a626b;
+    margin: 0 0 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    max-width: 640px;
+}
+
+.techPaneGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px 18px;
+}
+
+.techPaneItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 4px;
+    font-size: 0.88rem;
+    color: #3a4149;
+    transition: color 0.18s ease;
+}
+
+.techPaneItem:hover {
+    color: var(--primary);
+}
+
+.techDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.techPaneFoot {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.techPaneFootText {
+    font-size: 0.82rem;
+    color: #5a626b;
+}
+
+.techPaneFootCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: gap 0.2s ease;
+}
+
+.techPaneFootCta:hover {
+    gap: 11px;
+}
+
+.techPills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.techPill {
+    font-size: 0.76rem;
+    color: #3a4149;
+    padding: 5px 11px;
+    border-radius: 100px;
+    background: #f5f7f9;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    white-space: nowrap;
+}
+
+.techPill:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    background: rgba(139, 92, 246, 0.06);
+    color: #0a0f14;
+}
+
+.techNote {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: #8a93a0;
+    max-width: 760px;
+}
+
+/* ============================================================
+ * ABOUT
+ * ============================================================ */
+.aboutWrap {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 32px;
+}
+
+.aboutLead {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+}
+
+.aboutEyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 14px;
+}
+
+.aboutMsg {
+    font-family: var(--font-title), sans-serif;
+    font-size: 1.08rem;
+    line-height: 1.5;
+    color: #2a2f36;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+}
+
+.aboutCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    transition: gap 0.25s ease;
+    margin-top: auto;
+}
+
+.aboutCta:hover { gap: 13px; }
+
+.aboutList {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.aboutItem {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.aboutItem:hover { background: rgba(139, 92, 246, 0.07); }
+
+.aboutLabel {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.aboutDesc {
+    font-size: 0.8rem;
+    color: #5a626b;
+}
+
+/* ============================================================
+ * RIGHT — CTA + mobile toggle
+ * ============================================================ */
+.right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 22px;
+    border-radius: 100px;
+    background: #111111;
+    color: #fff;
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    white-space: nowrap;
+}
+
+.cta:hover {
+    background: #000000;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.28);
+}
+
+.menuBtn {
+    display: none;
+    background: none;
+    border: none;
+    color: #111418;
+    cursor: pointer;
+    padding: 4px;
+}
+
+/* ============================================================
+ * RESPONSIVE — tablet column reflow
+ * ============================================================ */
+@media (max-width: 1120px) {
+    .techWrap { grid-template-columns: 220px 1fr; gap: 22px; }
+}
+
+/* ============================================================
+ * MOBILE
+ * ============================================================ */
+.mobile { display: none; }
+
+@media (max-width: 1040px) {
+    .navWrap { display: none; }
+    .cta { display: none; }
+    .menuBtn { display: inline-flex; }
+
+    .mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding: 12px 24px 28px;
+        max-height: calc(100vh - 76px);
+        overflow-y: auto;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .mobileLink {
+        color: #1a1a1a;
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 15px 4px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        text-decoration: none;
+    }
+
+    .mobileLinkActive {
+        color: var(--primary);
+    }
+
+    .mAccordion {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .mAccBtn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 4px;
+        background: none;
+        border: none;
+        color: #1a1a1a;
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+    }
+
+    .mAccIcon {
+        color: #8a93a0;
+        transition: transform 0.25s ease;
+    }
+
+    .mAccIconOpen {
+        transform: rotate(45deg);
+        color: var(--primary);
+    }
+
+    .mAccPanel {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 8px;
+    }
+
+    .mSub {
+        color: #5a626b;
+        font-size: 0.9rem;
+        padding: 9px 4px 9px 14px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .mSub:active { color: #0a0f14; }
+
+    .mSubMuted { color: #8a93a0; font-size: 0.82rem; }
+
+    .mSubGroup {
+        display: block;
+        color: var(--primary);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 12px 4px 6px 14px;
+    }
+
+    .mobileCta {
+        margin-top: 18px;
+        text-align: center;
+        padding: 14px 22px;
+        border-radius: 100px;
+        background: #111111;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .mobileHome {
+        margin-top: 14px;
+        color: #8a93a0;
+        font-size: 0.85rem;
+        text-decoration: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .nav { padding: 0 18px; }
+    .mobile { padding: 12px 18px 24px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .chev, .ecoCard, .menuLink, .cta { transition: none; }
+}

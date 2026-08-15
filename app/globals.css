@@ -1,0 +1,264 @@
+:root {
+  --primary: #00d1ff;
+  /* Azure Neon Blue */
+  --primary-hover: #00b4db;
+  --primary-glow: rgba(0, 209, 255, 0.15);
+  --bg-dark: #111111;
+  --bg-light: #f8f8f8;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --border: rgba(0, 0, 0, 0.1);
+  --border-white: rgba(255, 255, 255, 0.1);
+  --radius-lg: 32px;
+  --radius-md: 16px;
+  --container-max: 1200px;
+  /* Heading font alias.
+     The CSS variable --font-outfit is wired in app/layout.tsx
+     to actually serve DM Sans (the closest free match to Google
+     Sans). This semantic alias means component CSS can just say
+     `font-family: var(--font-title), sans-serif` and stay correct
+     regardless of which face the project ships with later. */
+  --font-title: var(--font-outfit);
+
+  /* ============================================================
+     TYPOGRAPHIC SCALE — single source of truth
+     Modeled on the Appinventiv reference. Use these tokens in
+     component CSS instead of hardcoding clamp() everywhere.
+  ============================================================ */
+
+  /* Hero / page-opening title (e.g. "1600+ Minds. 3000+...") */
+  --fs-hero: clamp(40px, 5.5vw, 64px);
+  --lh-hero: 1.05;
+  --ls-hero: -0.025em;
+
+  /* Section title (e.g. "A Decade of Digital Excellence") */
+  --fs-section: clamp(32px, 4.4vw, 48px);
+  --lh-section: 1.1;
+  --ls-section: -0.025em;
+
+  /* Sub-section / card title (e.g. "We Own Responsibilities") */
+  --fs-sub: clamp(22px, 2.4vw, 28px);
+  --lh-sub: 1.2;
+  --ls-sub: -0.015em;
+
+  /* Body paragraph — section descriptions, card bodies */
+  --fs-body: 17px;
+  --lh-body: 1.6;
+
+  /* Smaller body — card descriptions, tertiary text */
+  --fs-body-sm: 15px;
+  --lh-body-sm: 1.55;
+
+  /* Eyebrow / tag */
+  --fs-eyebrow: 12px;
+  --ls-eyebrow: 0.16em;
+
+  /* Title weight — 600 reads as confident-but-restrained, similar to
+     the Google Sans / Product Sans aesthetic where hierarchy comes
+     from size and tracking, not from heavy weight. Bumping to 700
+     or 800 makes section titles feel shouty against body copy. */
+  --fw-title: 600;
+}
+
+/* ============================================================
+   uBIQ brand accent — purple. Scoped to uBIQ pages via the
+   .ubiqTheme class on their <main>, so the rest of the
+   Unntangle Technologies site keeps its own accent untouched.
+============================================================ */
+.ubiqTheme {
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --primary-glow: rgba(139, 92, 246, 0.15);
+  /* Brand gradient (matches the Unntangle button): blue-violet -> magenta */
+  --ubiq-gradient: linear-gradient(95deg, #6e5bf2 0%, #c44fe0 100%);
+  /* Neutral icon tokens — icons render grey (not brand colour). */
+  --ubiq-icon: #6b7480;
+  --ubiq-icon-bg: #f1f1f4;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: clip;
+  /* clip doesn't break position: sticky like hidden does */
+  scroll-padding-top: 90px;
+  /* offset in-page anchor jumps so they clear the fixed header */
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+section {
+  padding: 100px 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: var(--container-max);
+  width: 100%;
+}
+
+/* ============================================================
+   TYPOGRAPHIC RULES
+   These are the defaults; component CSS may override but should
+   match the same scale tokens. The key changes vs the previous
+   system:
+     - h1/h2 use the new --fs-hero / --fs-section tokens
+     - heading font-weight bumped to 800 to match the screenshot
+     - tighter letter-spacing (-0.025em vs -0.01em) for that
+       editorial / Appinventiv feel
+     - body p defaults to 17px / 1.6 (was 18px / inherit)
+============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title), sans-serif;
+  font-weight: var(--fw-title);
+  color: var(--text-main);
+}
+
+h1 {
+  font-size: var(--fs-hero);
+  line-height: var(--lh-hero);
+  letter-spacing: var(--ls-hero);
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: var(--fs-section);
+  line-height: var(--lh-section);
+  letter-spacing: var(--ls-section);
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: var(--fs-sub);
+  line-height: var(--lh-sub);
+  letter-spacing: var(--ls-sub);
+  margin-bottom: 14px;
+  font-weight: 700;
+  /* h3 stays at 700 — going to 800 makes card titles too heavy */
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+/* Body p inside a card / chip / form should not inherit
+   the 640px max-width that's right for prose blocks. */
+button p,
+li p,
+[class*='card'] p {
+  max-width: none;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: none;
+  font-family: var(--font-title), sans-serif;
+  font-size: 15px;
+  letter-spacing: -0.005em;
+}
+
+.btn-primary {
+  background-color: var(--bg-dark);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #333;
+}
+
+.btn-lime {
+  background-color: var(--primary);
+  color: var(--bg-dark);
+}
+
+.btn-lime:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--bg-dark);
+}
+
+.btn-outline:hover {
+  background-color: var(--border);
+}
+
+.tag {
+  color: var(--primary);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 20px;
+  font-family: var(--font-title), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+}
+
+/* ============================================================
+   UTILITY CLASSES — opt-in classes for components that want to
+   force the typographic system regardless of their own CSS module
+   weights. Add `className="title"` to a heading to override any
+   conflicting module styles.
+============================================================ */
+
+.titleHero {
+  font-family: var(--font-title), sans-serif !important;
+  font-size: var(--fs-hero) !important;
+  font-weight: var(--fw-title) !important;
+  line-height: var(--lh-hero) !important;
+  letter-spacing: var(--ls-hero) !important;
+}
+
+.titleSection {
+  font-family: var(--font-title), sans-serif !important;
+  font-size: var(--fs-section) !important;
+  font-weight: var(--fw-title) !important;
+  line-height: var(--lh-section) !important;
+  letter-spacing: var(--ls-section) !important;
+}
+
+.descBody {
+  font-size: var(--fs-body) !important;
+  line-height: var(--lh-body) !important;
+  color: var(--text-muted) !important;
+}

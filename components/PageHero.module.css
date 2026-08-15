@@ -1,0 +1,744 @@
+.hero {
+    position: relative;
+    width: auto;
+    min-height: auto;
+    padding: 24px 0 0 0 !important;
+    margin: 0 24px;
+    border-radius: 0;
+    overflow: visible;
+    display: block;
+    isolation: isolate;
+}
+
+.heroInner {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 460px;
+    /* `min-height` (not fixed `height`) so the inner panel can
+       grow with content padding without clipping. Set to 460px
+       so that pages with shorter content (e.g. /blog with a
+       2-line title) render at the same height as pages with
+       longer content (home, services, about — which all push to
+       ~440-470px naturally via their title/description stack).
+       The .title below overrides --fs-hero with a smaller clamp
+       specifically for PageHero so the headline doesn't wrap
+       to 5+ lines and balloon the section vertically. */
+}
+
+/* Decorative orbs (live on top of the inline-style gradient) */
+.gradientBg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.glowOrb1 {
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+}
+
+.glowOrb2 {
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.14) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+}
+
+.glowOrb3 {
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(100px);
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1280px;
+    padding: 44px 64px;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.content {
+    color: #fff;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 14px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+}
+
+.title {
+    font-family: var(--font-title), sans-serif;
+    /* PageHero-specific override of --fs-hero. The global hero
+       size (clamp 40-64px) is sized for stat-led brick layouts
+       like AboutStatsHero where the title sits centered at full
+       width. Inside PageHero's two-column grid, the title shares
+       60% of the width with the visual on the right, so 64px
+       wraps to 5+ lines on multi-word headlines like
+       "Design, Development & Smart Living Solutions". A tighter
+       clamp keeps the headline at 3 lines max, which lines up
+       with the visual stack height on the right side of the grid. */
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: var(--fw-title);
+    line-height: var(--lh-hero);
+    letter-spacing: var(--ls-hero);
+    color: #fff;
+    margin-bottom: 14px;
+    padding: 0.1em 0;
+    overflow: visible;
+}
+
+.titleAccent {
+    background: linear-gradient(90deg, #fff 0%, #fde68a 50%, #fff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-style: italic;
+    font-weight: 800;
+    display: inline-block;
+    padding: 0.15em 0.15em 0.2em 0.05em;
+    margin: -0.15em 0 -0.2em 0;
+    line-height: 1.3;
+    overflow: visible;
+}
+
+.description {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 520px;
+    margin-bottom: 22px;
+    font-weight: 400;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.ctaPrimary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #111;
+    color: #fff;
+    padding: 13px 22px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #111;
+}
+
+.ctaPrimary:hover {
+    background: #fff;
+    color: #111;
+    border-color: #fff;
+    transform: translateY(-2px);
+}
+
+.ctaSecondary {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: #fff;
+    padding: 13px 22px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.ctaSecondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+}
+
+/* Visual / Image Side */
+.visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visualWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 1 / 1;
+}
+
+.visualImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+    filter: saturate(1.1);
+}
+
+.floatingPill1,
+.floatingPill2 {
+    position: absolute;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.floatingPill1 {
+    bottom: 22%;
+    left: -8%;
+}
+
+.floatingPill2 {
+    bottom: 6%;
+    left: 10%;
+}
+
+.pillCyan {
+    background: #2dd4ff;
+    color: #111;
+}
+
+.pillDark {
+    background: #2d1a3a;
+    color: #fff;
+}
+
+.pillIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: #2dd4ff;
+    color: #111;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.pillDark .pillIcon {
+    background: #2dd4ff;
+}
+
+.pillCyan .pillIcon {
+    background: #2d1a3a;
+    color: #2dd4ff;
+}
+
+/* ============================
+   Stacked Strips Layout (NiCE-style)
+   ============================ */
+.stackedStripsWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.strip {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.stripImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.05);
+}
+
+.stripGap {
+    position: relative;
+    height: 6px;
+}
+
+.smileyBadge {
+    position: absolute;
+    left: 18%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    z-index: 4;
+}
+
+.smileyBadge svg {
+    width: 26px;
+    height: 26px;
+}
+
+.stripWithOverlay {
+    overflow: visible;
+}
+
+.stripWithOverlay .stripImage {
+    border-radius: 999px;
+}
+
+.overlayCtaWrapper {
+    position: absolute;
+    right: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+}
+
+.overlayCta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    min-width: auto;
+    min-height: auto;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.2;
+    box-shadow: 0 12px 28px rgba(139, 92, 246, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+}
+
+.overlayCta:hover {
+    transform: scale(1.04);
+    box-shadow: 0 22px 50px rgba(139, 92, 246, 0.55);
+}
+
+/* ============================
+   Collage Layout (Asymmetric 2-image)
+   ============================ */
+.collageWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1.05;
+}
+
+.collageMain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72%;
+    aspect-ratio: 4 / 5;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+.collageSecondary {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    aspect-ratio: 5 / 4;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border: 4px solid rgba(255, 255, 255, 0.15);
+}
+
+.collageImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.05);
+}
+
+.collagePill {
+    position: absolute;
+    bottom: 14%;
+    left: -2%;
+    z-index: 3;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ============================
+   Diamond Grid Layout (4 rotated tiles)
+   ============================ */
+.diamondWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diamondGrid {
+    position: relative;
+    width: 78%;
+    height: 78%;
+    transform: rotate(45deg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+}
+
+.diamondTile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
+    border: 3px solid rgba(255, 255, 255, 0.18);
+}
+
+.diamondInner {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-45deg) scale(1.45);
+    transform-origin: center;
+    overflow: hidden;
+}
+
+.diamondImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.05);
+}
+
+.diamondPill {
+    position: absolute;
+    bottom: 4%;
+    left: -6%;
+    z-index: 5;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ============================
+   Bento Layout (smart-home dashboard) — uBIQ
+   ============================ */
+.bentoWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+}
+
+.bentoGrid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1.45fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+}
+
+.bentoTile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.26);
+    border: 3px solid rgba(255, 255, 255, 0.22);
+}
+
+.bentoTileLarge {
+    grid-row: 1 / span 2;
+}
+
+.bentoImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.06);
+    transition: transform 0.55s ease;
+}
+
+.bentoTile:hover .bentoImage {
+    transform: scale(1.06);
+}
+
+.bentoPill {
+    position: absolute;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: #1a1a1a;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.bentoDot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dotGreen { background: #22c55e; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.22); }
+.dotAmber { background: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.22); }
+.dotViolet { background: #8b5cf6; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.22); }
+
+.bentoPillA { top: 7%; left: -7%; }
+.bentoPillB { top: 45%; right: -9%; }
+.bentoPillC { bottom: 7%; left: 16%; }
+
+@media (max-width: 1024px) {
+    .bentoWrapper { max-width: 340px; }
+}
+
+@media (max-width: 640px) {
+    .bentoWrapper { max-width: 290px; }
+    .bentoPill { font-size: 0.7rem; padding: 7px 12px; }
+    .bentoPillA { left: -3%; }
+    .bentoPillB { right: -4%; }
+    .bentoPillC { left: 12%; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .heroInner {
+        height: auto;
+        min-height: 480px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 36px 28px;
+        text-align: center;
+    }
+
+    .content {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+
+    .visual {
+        order: -1;
+    }
+
+    .visualWrapper {
+        max-width: 260px;
+    }
+
+    .stackedStripsWrapper {
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .strip {
+        height: 90px;
+    }
+
+    .smileyBadge {
+        width: 44px;
+        height: 44px;
+    }
+
+    .smileyBadge svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .overlayCta {
+        padding: 12px 20px;
+        min-width: auto;
+        min-height: auto;
+        font-size: 0.85rem;
+    }
+
+    .collageWrapper {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .diamondWrapper {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        margin: 0 16px;
+        padding-top: 16px !important;
+    }
+
+    .heroInner {
+        border-radius: 24px;
+    }
+
+    .container {
+        padding: 32px 20px;
+    }
+
+    .title {
+        font-size: 1.875rem;
+    }
+
+    .floatingPill1 {
+        left: -5%;
+        font-size: 0.75rem;
+        padding: 7px 12px;
+    }
+
+    .floatingPill2 {
+        font-size: 0.75rem;
+        padding: 7px 12px;
+    }
+
+    .actions {
+        width: 100%;
+    }
+
+    .ctaPrimary,
+    .ctaSecondary {
+        flex: 1;
+        justify-content: center;
+        padding: 12px 18px;
+        font-size: 0.85rem;
+    }
+
+    .stackedStripsWrapper {
+        max-width: 320px;
+        gap: 6px;
+    }
+
+    .strip {
+        height: 76px;
+    }
+
+    .overlayCtaWrapper {
+        right: -6%;
+        transform: translateY(-50%);
+    }
+
+    .overlayCta {
+        padding: 10px 16px;
+        min-width: auto;
+        min-height: auto;
+        font-size: 0.78rem;
+    }
+
+    .collageWrapper {
+        max-width: 260px;
+    }
+
+    .collagePill {
+        font-size: 0.75rem;
+        padding: 8px 14px;
+    }
+
+    .diamondWrapper {
+        max-width: 240px;
+    }
+
+    .diamondPill {
+        font-size: 0.75rem;
+        padding: 8px 14px;
+    }
+}

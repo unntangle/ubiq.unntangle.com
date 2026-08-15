@@ -1,0 +1,126 @@
+/* uBIQ Technology Ecosystem — LIGHT, centered statement + platform chips. */
+
+.section {
+    position: relative;
+    width: 100%;
+    background: #ffffff;
+    display: block;
+    padding: 110px 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.glow {
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 66%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 22px;
+}
+
+.statement {
+    font-family: var(--font-title), sans-serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: var(--fw-title);
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+    color: #111418;
+    margin: 0 0 22px;
+}
+
+.accent {
+    background: var(--ubiq-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.sub {
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: #5a626b;
+    margin: 0 auto 40px;
+    max-width: 600px;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.chip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 11px 24px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+    background: #f5f7f9;
+    color: #3a4149;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+/* Looping "signal pulse" ring — staggered per chip so a wave of
+   activity ripples across the connected technologies. */
+.chip::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+    animation: chipSignal 3s ease-out infinite;
+    animation-delay: var(--d, 0s);
+}
+
+@keyframes chipSignal {
+    0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); border-color: transparent; }
+    14% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.45); }
+    55% { box-shadow: 0 0 0 7px rgba(139, 92, 246, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+}
+
+.chip:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    background: rgba(139, 92, 246, 0.07);
+    color: #0a0f14;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chip::after { animation: none; }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 76px 18px;
+    }
+}

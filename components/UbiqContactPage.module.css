@@ -19,12 +19,12 @@
 .hero {
     padding-top: 150px; padding-bottom: 90px; overflow: hidden;
     background:
-        radial-gradient(900px 480px at 85% -10%, rgba(139, 92, 246, 0.16), transparent 70%),
-        linear-gradient(180deg, #ffffff 0%, #f7f5ff 70%, #ffffff 100%);
+        radial-gradient(900px 480px at 85% -10%, rgba(123, 44, 191, 0.16), transparent 70%),
+        linear-gradient(180deg, var(--ubiq-cream) 0%, var(--ubiq-lilac) 70%, var(--ubiq-cream) 100%);
 }
 .heroGlow {
     position: absolute; top: -150px; right: -60px; width: 620px; height: 480px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.16), transparent 62%); filter: blur(22px); pointer-events: none; z-index: 0;
+    background: radial-gradient(circle, rgba(245, 192, 122, 0.2), transparent 62%); filter: blur(22px); pointer-events: none; z-index: 0;
 }
 .heroGrid {
     position: absolute; inset: 0;
@@ -91,7 +91,7 @@
 .label { font-size: 0.8rem; font-weight: 600; color: #3a414a; }
 .input, .textarea, .select {
     width: 100%; box-sizing: border-box; font-family: inherit; font-size: 0.92rem; color: #111418;
-    background: #f7f7f9; border: 1px solid rgba(0, 0, 0, 0.09); border-radius: 12px; padding: 12px 14px;
+    background: #faf7f2; border: 1px solid rgba(0, 0, 0, 0.09); border-radius: 12px; padding: 12px 14px;
     transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 .input::placeholder, .textarea::placeholder { color: #a0a4aa; }
@@ -107,7 +107,7 @@
 .spaceRow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .spaceBtn {
     display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
-    background: #f7f7f9; border: 1px solid rgba(0, 0, 0, 0.09); border-radius: 14px; padding: 14px 8px;
+    background: #faf7f2; border: 1px solid rgba(0, 0, 0, 0.09); border-radius: 14px; padding: 14px 8px;
     font-size: 0.8rem; font-weight: 600; color: #5a626b; text-align: center;
     transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
@@ -119,7 +119,8 @@
 .submit {
     margin-top: 4px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     width: 100%; padding: 14px 26px; border: none; cursor: pointer; border-radius: 100px;
-    background: var(--ubiq-gradient); color: #fff; font-family: inherit; font-size: 0.95rem; font-weight: 600;
+    background: var(--ubiq-btn); color: #fff; font-family: inherit; font-size: 0.95rem; font-weight: 600;
+    box-shadow: 0 12px 28px -10px rgba(123, 44, 191, 0.55);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .submit:hover { transform: translateY(-2px); }

@@ -52,10 +52,10 @@
 .primary {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 12px 26px; border-radius: 100px;
-    background: #111111; color: #fff; font-size: 0.9rem; font-weight: 600; text-decoration: none;
+    background: var(--ubiq-btn); color: #fff; font-size: 0.9rem; font-weight: 600; text-decoration: none;
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
-.primary:hover { background: #000; transform: translateY(-2px); box-shadow: 0 14px 32px rgba(139, 92, 246, 0.28); }
+.primary:hover { background: var(--ubiq-btn-hover); transform: translateY(-2px); }
 .secondary {
     display: inline-flex; align-items: center; padding: 12px 26px; border-radius: 100px;
     background: transparent; border: 1px solid rgba(15, 23, 42, 0.18); color: #111418; font-size: 0.9rem; font-weight: 600; text-decoration: none;
@@ -72,8 +72,8 @@
     padding-bottom: 80px;
     overflow: hidden;
     background:
-        radial-gradient(900px 460px at 80% -10%, rgba(139, 92, 246, 0.14), transparent 70%),
-        linear-gradient(180deg, #ffffff 0%, #f7f5ff 72%, #ffffff 100%);
+        radial-gradient(900px 460px at 80% -10%, rgba(123, 44, 191, 0.14), transparent 70%),
+        linear-gradient(180deg, var(--ubiq-cream) 0%, var(--ubiq-lilac) 72%, var(--ubiq-cream) 100%);
 }
 .heroGlow {
     position: absolute; top: -150px; right: -40px; width: 600px; height: 460px;
@@ -154,7 +154,7 @@
     0%, 100% { box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.35), 0 24px 54px -18px rgba(139, 92, 246, 0.5); }
     50% { box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.55), 0 24px 66px -10px rgba(139, 92, 246, 0.9); }
 }
-.coreTint { position: absolute; inset: 0; z-index: 2; background: linear-gradient(160deg, rgba(110, 91, 242, 0.4), rgba(196, 79, 224, 0.16)); }
+.coreTint { position: absolute; inset: 0; z-index: 2; background: linear-gradient(160deg, rgba(123, 44, 191, 0.42), rgba(245, 192, 122, 0.16)); }
 .coreTag {
     position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); z-index: 3;
     font-family: var(--font-title), sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em;
@@ -222,7 +222,7 @@
     position: relative;
     overflow: hidden;
     padding: 18px 0;
-    background: #0b0b14;
+    background: var(--ubiq-night);
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
     mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
@@ -238,7 +238,7 @@
 /* ============================================================
  * STATEMENT
  * ============================================================ */
-.statementSection { background: #fff; padding-top: 64px; padding-bottom: 64px; }
+.statementSection { background: var(--ubiq-cream); padding-top: 64px; padding-bottom: 64px; }
 .statement {
     max-width: 900px; margin: 0 auto; text-align: center;
     font-family: var(--font-title), sans-serif; font-size: clamp(1.2rem, 2.3vw, 1.7rem);
@@ -248,7 +248,7 @@
 /* ============================================================
  * CATEGORIES
  * ============================================================ */
-.cats { background: #f8f8f8; }
+.cats { background: var(--ubiq-cream-2); }
 
 /* interactive discipline explorer */
 .explorer { display: grid; grid-template-columns: 340px 1fr; gap: 26px; align-items: stretch; }
@@ -315,7 +315,7 @@
     background: #f6f6f7; border: 1px solid rgba(0, 0, 0, 0.06); padding: 8px 15px; border-radius: 100px;
     cursor: default; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
-.panelChip:hover { background: #111418; color: #fff; border-color: #111418; transform: translateY(-2px); }
+.panelChip:hover { background: var(--primary); color: #fff; border-color: var(--primary); transform: translateY(-2px); }
 
 /* live image panel */
 .panelMedia { position: relative; overflow: hidden; background: #ededf0; }
@@ -327,7 +327,7 @@
 @keyframes kenBurns { from { transform: scale(1.05); } to { transform: scale(1.16); } }
 .mediaOverlay {
     position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 16%), linear-gradient(180deg, rgba(17, 20, 24, 0) 55%, rgba(17, 20, 24, 0.18));
+    background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 16%), linear-gradient(180deg, rgba(20, 11, 31, 0) 55%, rgba(20, 11, 31, 0.22));
 }
 .mediaIcon {
     position: absolute; top: 18px; left: 30px; z-index: 2;
@@ -344,32 +344,32 @@
 /* ============================================================
  * VENDOR-INDEPENDENT NOTE (dark)
  * ============================================================ */
-.note { background: #0b0b14; overflow: hidden; }
+.note { background: var(--ubiq-night); overflow: hidden; }
 .noteGlow {
     position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
     width: 820px; height: 440px;
-    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.18), transparent 65%);
+    background: radial-gradient(ellipse at center, rgba(123, 44, 191, 0.32), transparent 65%);
     filter: blur(30px); pointer-events: none; z-index: 0;
 }
 .noteInner { max-width: 760px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .noteText { display: block; font-size: 1.02rem; line-height: 1.65; color: rgba(255, 255, 255, 0.66); margin: 0 0 24px; max-width: 640px; }
 .noteChecks { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 24px; margin-bottom: 30px; }
 .noteCheck { display: inline-flex; align-items: center; gap: 9px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.85); }
-.noteCheck svg { color: var(--primary); }
+.noteCheck svg { color: var(--ubiq-lavender); }
 .noteCta {
     display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; border-radius: 100px;
-    background: var(--ubiq-gradient); color: #fff; font-size: 0.9rem; font-weight: 600; text-decoration: none;
+    background: var(--ubiq-btn); color: #fff; font-size: 0.9rem; font-weight: 600; text-decoration: none;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.noteCta:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(139, 92, 246, 0.4); }
+.noteCta:hover { transform: translateY(-2px); }
 
 /* ============================================================
  * CTA
  * ============================================================ */
-.ctaSection { background: #f8f8f8; }
+.ctaSection { background: var(--ubiq-cream-2); }
 .ctaBand {
     position: relative; overflow: hidden; border-radius: 28px; border: 1px solid rgba(139, 92, 246, 0.4);
-    background: radial-gradient(700px 320px at 50% 0%, rgba(139, 92, 246, 0.12), transparent 72%), linear-gradient(180deg, #ffffff 0%, #f7f5ff 100%);
+    background: radial-gradient(700px 320px at 50% 0%, rgba(123, 44, 191, 0.12), transparent 72%), linear-gradient(180deg, #ffffff 0%, var(--ubiq-lilac) 100%);
     padding: 64px 32px; text-align: center;
 }
 .ctaGlow { position: absolute; top: -120px; left: 50%; transform: translateX(-50%); width: 540px; height: 340px; background: radial-gradient(circle, rgba(139, 92, 246, 0.14), transparent 65%); filter: blur(16px); pointer-events: none; }

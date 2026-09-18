@@ -33,9 +33,9 @@ const modes: Mode[] = [
         mode: 'Morning Mode',
         line: 'Space wakes with you.',
         note: 'Lights warm, blinds rise and climate eases in — gently, as you stir.',
-        hue1: '#ffe6c2',
-        hue2: '#ffb27a',
-        dot: '#e0892f',
+        hue1: '#fff0d6',
+        hue2: '#f5c07a',
+        dot: '#d98a2b',
     },
     {
         icon: Briefcase,
@@ -63,9 +63,10 @@ const modes: Mode[] = [
         mode: 'Night Mode',
         line: 'Comfort, optimised.',
         note: 'Pathways softly lit, doors secured, everything settling for rest.',
-        hue1: '#3a3f6e',
-        hue2: '#171a36',
-        dot: '#8b7bf2',
+        // poster "Movie Night": aubergine with a purple glow
+        hue1: '#5a189a',
+        hue2: '#140b1f',
+        dot: '#7b2cbf',
         lightIcon: true,
     },
 ];

@@ -2,26 +2,48 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Instagram, Twitter, Linkedin, ArrowUp } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, ArrowUp, ArrowRight } from 'lucide-react';
 import styles from './Footer.module.css';
 
 /**
- * Sitewide footer.
+ * uBIQ sitewide footer.
  *
- * Link audit notes:
- *   - Removed "Case studies" / "Case studies CMS" — there's no
- *     /case-studies route yet, and "CMS" links shouldn't ship to
- *     production. Re-add once a real case-studies surface exists.
- *   - Removed "Blog post CMS" for the same reason.
- *   - Removed the per-category blog links (/blog/ai, /modernization,
- *     /case-studies) — those paths are blog post slugs, not category
- *     filters, so they 404'd. The blog index already lets users
- *     filter by service category, which is the correct surface.
- *   - Legal links now point at real /privacy, /terms, and
- *     /cookie-preferences pages instead of `#`.
- *   - Social links remain `#` because the company doesn't have
- *     official handles yet — wire them up when accounts exist.
+ * Mirrors the uBIQ site structure (nav + ecosystem + solutions) rather than
+ * the parent Unntangle Technologies footer. Legal pages live on the parent
+ * domain, so those links point there.
  */
+
+const PARENT_SITE_URL = 'https://unntangle.com';
+
+const exploreLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'About uBIQ', href: '/about' },
+    { label: 'Solutions', href: '/solutions' },
+    { label: 'Technologies', href: '/technologies' },
+    { label: 'Experiences', href: '/experiences' },
+    { label: 'Contact', href: '/contact' },
+];
+
+const ecosystemLinks = [
+    { label: 'uBIQ Senz', href: '/senz' },
+    { label: 'uBIQ Twin', href: '/twin' },
+    { label: 'uBIQ Care+', href: '/care-plus' },
+];
+
+const solutionLinks = [
+    { label: 'Smart Home Automation', href: '/solutions#smart-home-automation' },
+    { label: 'Lighting Intelligence', href: '/solutions#lighting-intelligence' },
+    { label: 'Climate Automation', href: '/solutions#climate-automation' },
+    { label: 'Audio & Entertainment', href: '/solutions#audio-entertainment' },
+    { label: 'Security & Access', href: '/solutions#security-access' },
+    { label: 'Commercial Automation', href: '/solutions#commercial-automation' },
+];
+
+const socialLinks = [
+    { label: 'Instagram', href: 'https://www.instagram.com/ubiq_automation/', icon: Instagram },
+    { label: 'Facebook', href: 'https://www.facebook.com/people/UBIQ-Automation/61594209613014/', icon: Facebook },
+    { label: 'LinkedIn', href: '#', icon: Linkedin },
+];
 
 export default function Footer() {
     const scrollToTop = () => {
@@ -34,80 +56,67 @@ export default function Footer() {
         <div className={styles.footerWrapper}>
             <footer className={styles.footer}>
                 <div className={styles.container}>
-                    {/* Top Bar with Logo */}
+                    {/* Top: brand + CTA */}
                     <div className={styles.topBar}>
-                        <div>
-                            <Link href="/" className={styles.logoLink}>
+                        <div className={styles.brand}>
+                            <Link href="/" className={styles.logoLink} aria-label="uBIQ home">
                                 <Image
-                                    src="/images/unntangle_logo_white.png"
-                                    alt="Unntangle Technologies Logo"
-                                    width={160}
-                                    height={40}
+                                    src="/uBIQ/uBIQ-logo.svg"
+                                    alt="uBIQ Smart Automation"
+                                    width={932}
+                                    height={306}
+                                    unoptimized
                                     className={styles.footerLogo}
                                 />
                             </Link>
-                            <p style={{ color: '#8b939e', fontSize: '14px', lineHeight: 1.5, marginTop: '14px', maxWidth: '340px' }}>
-                                Building immersive and intelligent experiences since 2023.
-                            </p>
+                            <p className={styles.tagline}>Where Spaces Become Intelligent.</p>
                         </div>
+
+                        <Link href="/contact" className={styles.topCta}>
+                            Book Experience <ArrowRight size={16} />
+                        </Link>
                     </div>
 
-                    {/* Main Links Grid - 4 Columns */}
+                    {/* Link columns */}
                     <div className={styles.linksGrid}>
                         <div className={styles.column}>
-                            <h4>Quick Links</h4>
-                            <Link href="/about">About us</Link>
-                            <Link href="/services">Services</Link>
-                            {/* HIDDEN-UBIQ: <Link href="/">uBIQ</Link> */}
-                            <Link href="/blog">Blog</Link>
-                            <Link href="/contact">Contact</Link>
+                            <h4>Explore</h4>
+                            {exploreLinks.map((l) => (
+                                <Link key={l.label} href={l.href}>{l.label}</Link>
+                            ))}
                         </div>
 
                         <div className={styles.column}>
-                            <h4>What we do</h4>
-                            <Link href="/services">Technology</Link>
-                            <Link href="/services">Creative Design</Link>
-                            <Link href="/services">Growth Marketing</Link>
+                            <h4>Ecosystem</h4>
+                            {ecosystemLinks.map((l) => (
+                                <Link key={l.label} href={l.href}>{l.label}</Link>
+                            ))}
                         </div>
 
-                        {/* HIDDEN-UBIQ: the "Our Brands" column listed only
-                            uBIQ, so the entire column is hidden rather than
-                            leaving a dangling heading. Restore as-is when the
-                            brand site comes back.
                         <div className={styles.column}>
-                            <h4>Our Brands</h4>
-                            <Link href="/">uBIQ — Smart Space Automation</Link>
+                            <h4>Solutions</h4>
+                            {solutionLinks.map((l) => (
+                                <Link key={l.label} href={l.href}>{l.label}</Link>
+                            ))}
                         </div>
-                        */}
-
-                        {/* HIDDEN-CONTACT: entire Contact column hidden — phone, email,
-                            and office address are all suppressed, which left this column
-                            empty (just a dangling heading). Restore the inner items below
-                            when contact details should be shown again.
-                        <div className={styles.column}>
-                            <h4>Contact</h4>
-                            <div className={styles.contactInfo}>
-                                <div className={styles.phoneNumbers}>
-                                    <Link href="tel:+917092747933">+91 70927 47933</Link>
-                                    <span> / </span>
-                                    <Link href="tel:+916379388462">+91 63793 88462</Link>
-                                </div>
-                                <Link href="mailto:gokul@unntangle.com">gokul@unntangle.com</Link>
-                                <p className={styles.address}>
-                                    SBS Office Space, Old No.470, New No.700,<br />
-                                    Anna Salai, Nandanam, Chennai 600035.
-                                </p>
-                            </div>
-                        </div>
-                        */}
 
                         <div className={styles.column}>
                             <h4>Follow us</h4>
                             <div className={styles.socialCol}>
-                                <Link href="#" className={styles.socialLink}><Linkedin size={18} /> <span>LinkedIn</span></Link>
-                                <Link href="#" className={styles.socialLink}><Instagram size={18} /> <span>Instagram</span></Link>
-                                <Link href="#" className={styles.socialLink}><Facebook size={18} /> <span>Facebook</span></Link>
-                                <Link href="#" className={styles.socialLink}><Twitter size={18} /> <span>Twitter</span></Link>
+                                {socialLinks.map((s) => {
+                                    const Icon = s.icon;
+                                    const external = s.href.startsWith('http');
+                                    return (
+                                        <Link
+                                            key={s.label}
+                                            href={s.href}
+                                            className={styles.socialLink}
+                                            {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                        >
+                                            <Icon size={18} /> <span>{s.label}</span>
+                                        </Link>
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
@@ -122,13 +131,19 @@ export default function Footer() {
                     <div className={styles.bottomBar}>
                         <div className={styles.splitRow}>
                             <div className={styles.legalLinks}>
-                                <Link href="/privacy">Privacy</Link>
-                                <Link href="/terms">Site Terms</Link>
-                                <Link href="/cookie-preferences">Cookie Preferences</Link>
+                                <Link href={`${PARENT_SITE_URL}/privacy`}>Privacy</Link>
+                                <Link href={`${PARENT_SITE_URL}/terms`}>Site Terms</Link>
+                                <Link href={`${PARENT_SITE_URL}/cookie-preferences`}>Cookie Preferences</Link>
                             </div>
 
                             <p className={styles.copyright}>
-                                © {new Date().getFullYear()}, <span className={styles.accent}>Unntangle Technologies</span>. All rights reserved.
+                                © {new Date().getFullYear()}{' '}
+                                <Link href="/" className={styles.accent}>uBIQ Automation</Link>
+                                . An{' '}
+                                <Link href={PARENT_SITE_URL} className={styles.accent} target="_blank" rel="noopener noreferrer">
+                                    Unntangle Technologies
+                                </Link>
+                                {' '}company. All rights reserved.
                             </p>
                         </div>
                     </div>

@@ -3,7 +3,7 @@
 .section {
     position: relative;
     width: 100%;
-    background: #ffffff;
+    background: var(--ubiq-cream);
     display: block;
     padding: 110px 24px;
     box-sizing: border-box;
@@ -17,7 +17,7 @@
     transform: translateX(-50%);
     width: 900px;
     height: 600px;
-    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 66%);
+    background: radial-gradient(ellipse at center, rgba(123, 44, 191, 0.12) 0%, transparent 66%);
     pointer-events: none;
     z-index: 0;
 }
@@ -81,7 +81,7 @@
     padding: 11px 24px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 100px;
-    background: #f5f7f9;
+    background: #ffffff;
     color: #3a4149;
     font-size: 0.92rem;
     font-weight: 600;

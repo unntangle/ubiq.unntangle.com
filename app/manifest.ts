@@ -19,8 +19,8 @@ export default function manifest(): MetadataRoute.Manifest {
             "Intelligent spaces, seamless experiences. Automation for homes, workplaces and commercial environments.",
         start_url: "/",
         display: "standalone",
-        background_color: "#ffffff",
-        theme_color: "#0a0a0a",
+        background_color: "#faf7f2",
+        theme_color: "#7b2cbf",
         orientation: "portrait",
         icons: [
             {

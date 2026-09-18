@@ -15,7 +15,7 @@
 }
 
 .scrolled {
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(250, 247, 242, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.07);
@@ -23,7 +23,7 @@
 
 /* When a mega menu is open, force the solid glass backing even at the top. */
 .menuOpen {
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(250, 247, 242, 0.97);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 }
@@ -39,30 +39,73 @@
     gap: 24px;
 }
 
-/* Brand lockup */
+/* Brand lockup:  [logo / SMART AUTOMATION] | An Unntangle Company */
 .lockup {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
     text-decoration: none;
     flex-shrink: 0;
 }
 
+.brandMark {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    text-decoration: none;
+}
+
 .logo {
-    height: 42px;
+    height: 38px;
     width: auto;
     /* Logo artwork is black-on-transparent — show it as-is on the light header. */
     filter: none;
 }
 
-.byline {
-    align-self: flex-end;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    color: #8a93a0;
+.brandTagline {
+    font-family: var(--font-title), sans-serif;
+    font-size: 0.5rem;
     font-weight: 500;
-    padding-right: 2px;
+    letter-spacing: 0.24em;
+    /* cancel the trailing letter-space so the text ends flush with the logo */
+    margin-right: -0.24em;
+    text-transform: uppercase;
+    color: #121016;
+    white-space: nowrap;
+    line-height: 1;
+    padding-left: 2px;
+}
+
+.lockupDivider {
+    width: 1.5px;
+    height: 34px;
+    align-self: center;
+    border-radius: 2px;
+    background: rgba(18, 16, 22, 0.42);
+}
+
+.byline {
+    font-size: 0.72rem;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    color: #6b7480;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.byline:hover {
+    color: var(--primary);
+}
+
+@media (max-width: 420px) {
+    .lockupDivider,
+    .byline {
+        display: none;
+    }
 }
 
 /* ============================================================
@@ -101,14 +144,14 @@
 .link:hover,
 .triggerActive {
     color: #0a0f14;
-    background: rgba(0, 0, 0, 0.05);
+    background: transparent;
 }
 
 /* Current page indicator */
 .linkActive,
 .linkActive:hover {
     color: var(--primary);
-    background: rgba(139, 92, 246, 0.12);
+    background: transparent;
 }
 
 .chev {
@@ -138,7 +181,7 @@
 }
 
 .mega {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(252, 250, 246, 0.98);
     backdrop-filter: blur(22px) saturate(140%);
     -webkit-backdrop-filter: blur(22px) saturate(140%);
     border: 1px solid rgba(0, 0, 0, 0.07);
@@ -265,7 +308,6 @@
 .ecoCard:hover {
     border-color: rgba(139, 92, 246, 0.4);
     transform: translateY(-4px);
-    box-shadow: 0 22px 46px rgba(2, 8, 23, 0.16);
 }
 
 /* Real-image header */
@@ -665,7 +707,7 @@
     align-items: center;
     padding: 10px 22px;
     border-radius: 100px;
-    background: #111111;
+    background: var(--ubiq-btn);
     color: #fff;
     font-size: 0.86rem;
     font-weight: 600;
@@ -675,9 +717,8 @@
 }
 
 .cta:hover {
-    background: #000000;
+    background: var(--ubiq-btn-hover);
     transform: translateY(-1px);
-    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.28);
 }
 
 .menuBtn {
@@ -713,7 +754,7 @@
         padding: 12px 24px 28px;
         max-height: calc(100vh - 76px);
         overflow-y: auto;
-        background: rgba(255, 255, 255, 0.98);
+        background: rgba(250, 247, 242, 0.98);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -795,7 +836,7 @@
         text-align: center;
         padding: 14px 22px;
         border-radius: 100px;
-        background: #111111;
+        background: var(--ubiq-btn);
         color: #fff;
         font-weight: 600;
         text-decoration: none;

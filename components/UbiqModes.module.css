@@ -6,7 +6,7 @@
 
 .section {
     width: 100%;
-    background: #f8f8f8;
+    background: var(--ubiq-cream-2);
     display: block;
     padding: 110px 24px;
     box-sizing: border-box;
@@ -59,8 +59,9 @@
     right: 12.5%;
     height: 3px;
     border-radius: 100px;
-    background: linear-gradient(90deg, #ffc488 0%, #8fb6ef 36%, #bcc4d0 64%, #2b2f57 100%);
-    opacity: 0.55;
+    /* Poster light journey: morning sun -> warm evening -> movie night */
+    background: linear-gradient(90deg, #ffd39a 0%, #f5c07a 30%, #9d4edd 68%, #2a1340 100%);
+    opacity: 0.7;
 }
 
 .stops {
@@ -129,7 +130,7 @@
 /* ---------------- stage ---------------- */
 .stage {
     position: relative;
-    background: #ffffff;
+    background: #fffdfa;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 26px;
     box-shadow: 0 18px 50px rgba(15, 23, 42, 0.07);

@@ -1,11 +1,13 @@
 :root {
-  --primary: #00d1ff;
-  /* Azure Neon Blue */
-  --primary-hover: #00b4db;
-  --primary-glow: rgba(0, 209, 255, 0.15);
-  --bg-dark: #111111;
-  --bg-light: #f8f8f8;
-  --text-main: #1a1a1a;
+  /* This domain is uBIQ-only, so the root tokens follow the uBIQ
+     "Lighting should adapt to you" poster palette. */
+  --primary: #7b2cbf;
+  /* Royal purple */
+  --primary-hover: #5a189a;
+  --primary-glow: rgba(123, 44, 191, 0.15);
+  --bg-dark: #140b1f;
+  --bg-light: #faf7f2;
+  --text-main: #121016;
   --text-muted: #666666;
   --border: rgba(0, 0, 0, 0.1);
   --border-white: rgba(255, 255, 255, 0.1);
@@ -65,15 +67,45 @@
    .ubiqTheme class on their <main>, so the rest of the
    Unntangle Technologies site keeps its own accent untouched.
 ============================================================ */
+:root,
 .ubiqTheme {
-  --primary: #8b5cf6;
-  --primary-hover: #7c3aed;
-  --primary-glow: rgba(139, 92, 246, 0.15);
-  /* Brand gradient (matches the Unntangle button): blue-violet -> magenta */
-  --ubiq-gradient: linear-gradient(95deg, #6e5bf2 0%, #c44fe0 100%);
-  /* Neutral icon tokens — icons render grey (not brand colour). */
-  --ubiq-icon: #6b7480;
-  --ubiq-icon-bg: #f1f1f4;
+  /* ---- Theme: "Lighting should adapt to you" poster ----
+     Warm ivory canvas, ink-black type, royal-purple accent,
+     aubergine night tones and a warm amber evening glow. */
+  --primary: #7b2cbf;
+  --primary-hover: #5a189a;
+  --primary-glow: rgba(123, 44, 191, 0.15);
+
+  /* Brand gradient: light violet -> royal purple -> deep purple
+     (the "ADAPT TO YOU." headline treatment). */
+  --ubiq-gradient: linear-gradient(135deg, #9d4edd 0%, #7b2cbf 50%, #5a189a 100%);
+
+  /* Primary buttons */
+  --ubiq-btn: linear-gradient(135deg, #8e3fd6 0%, #6a1fb0 100%);
+  --ubiq-btn-hover: linear-gradient(135deg, #7b2cbf 0%, #4a1180 100%);
+
+  /* Surfaces */
+  --ubiq-cream: #faf7f2;      /* main page canvas */
+  --ubiq-cream-2: #f4efe7;    /* alternate band */
+  --ubiq-lilac: #f3ecf9;      /* soft purple wash */
+  --ubiq-night: #140b1f;      /* "movie night" aubergine */
+  --ubiq-night-2: #241338;
+
+  /* Type + accents */
+  --ubiq-ink: #121016;
+  --ubiq-amber: #f5c07a;      /* warm evening light */
+  --ubiq-lavender: #cfa8ff;   /* purple that reads on dark */
+
+  /* Icons use the brand purple on a soft lilac chip. */
+  --ubiq-icon: #7b2cbf;
+  --ubiq-icon-bg: #f1e8fb;
+
+  background-color: var(--ubiq-cream);
+  color: var(--ubiq-ink);
+}
+
+.ubiqTheme ::selection {
+  background: rgba(123, 44, 191, 0.22);
 }
 
 * {

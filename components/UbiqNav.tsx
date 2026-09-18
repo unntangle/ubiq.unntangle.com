@@ -159,18 +159,29 @@ export default function UbiqNav() {
         <header className={`${styles.header} ${scrolled || active ? styles.scrolled : ''} ${active ? styles.menuOpen : ''}`}>
             <nav className={styles.nav}>
                 {/* Brand lockup */}
-                <Link href="/" className={styles.lockup} aria-label="uBIQ home" onMouseEnter={() => setActive(null)}>
-                    <Image
-                        src="/uBIQ/uBIQ-logo.svg"
-                        alt="uBIQ"
-                        width={932}
-                        height={306}
-                        unoptimized
-                        priority
-                        className={styles.logo}
-                    />
-                    <span className={styles.byline}>by Unntangle</span>
-                </Link>
+                <div className={styles.lockup} onMouseEnter={() => setActive(null)}>
+                    <Link href="/" className={styles.brandMark} aria-label="uBIQ Smart Automation home">
+                        <Image
+                            src="/uBIQ/uBIQ-logo.svg"
+                            alt="uBIQ"
+                            width={932}
+                            height={306}
+                            unoptimized
+                            priority
+                            className={styles.logo}
+                        />
+                        <span className={styles.brandTagline}>Smart Automation</span>
+                    </Link>
+                    <span className={styles.lockupDivider} aria-hidden="true" />
+                    <a
+                        href="https://unntangle.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.byline}
+                    >
+                        An Unntangle<br />Company
+                    </a>
+                </div>
 
                 {/* Desktop nav + mega panel share one hover region */}
                 <div className={styles.navWrap} onMouseLeave={scheduleClose}>

@@ -7,7 +7,7 @@
 
 .section {
     width: 100%;
-    background: #f8f8f8;
+    background: var(--ubiq-cream-2);
     display: block;
     padding: 110px 24px;
     box-sizing: border-box;
@@ -179,7 +179,7 @@
     padding: 2px;
     border-radius: 24px;
     background: rgba(2, 8, 23, 0.12);
-    box-shadow: 0 18px 50px rgba(110, 91, 242, 0.16);
+    box-shadow: 0 18px 50px rgba(123, 44, 191, 0.16);
 }
 
 /* Moving light "beam" that travels around the outline */
@@ -192,10 +192,10 @@
     background: conic-gradient(
         from var(--beamAngle),
         transparent 0turn 0.6turn,
-        rgba(110, 91, 242, 0) 0.6turn,
-        #6e5bf2 0.8turn,
-        #c44fe0 0.95turn,
-        rgba(196, 79, 224, 0) 1turn
+        rgba(123, 44, 191, 0) 0.6turn,
+        #7b2cbf 0.8turn,
+        #cfa8ff 0.95turn,
+        rgba(207, 168, 255, 0) 1turn
     );
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
@@ -219,7 +219,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: linear-gradient(165deg, #fbf9ff 0%, #ffffff 62%);
+    background: linear-gradient(165deg, #f7f0fd 0%, #ffffff 62%);
     border-radius: 22px;
     padding: 38px 34px;
 }
@@ -242,7 +242,7 @@
     border-radius: 13px;
     background: var(--ubiq-gradient);
     color: #fff;
-    box-shadow: 0 10px 24px rgba(110, 91, 242, 0.32);
+    box-shadow: 0 10px 24px rgba(123, 44, 191, 0.32);
 }
 
 .livePill {
@@ -331,8 +331,8 @@
 }
 
 .tagLive {
-    color: #5b3fb8;
-    background: #f3effe;
+    color: #5a189a;
+    background: #f3ecf9;
     border: 1px solid rgba(139, 92, 246, 0.22);
 }
 

@@ -127,8 +127,8 @@
     padding-bottom: 110px;
     overflow: hidden;
     background:
-        radial-gradient(1000px 520px at 70% -10%, rgba(139, 92, 246, 0.07), transparent 72%),
-        linear-gradient(180deg, #ffffff 0%, #f8f7fc 60%, #f8f8f8 100%);
+        radial-gradient(1000px 520px at 70% -10%, rgba(123, 44, 191, 0.09), transparent 72%),
+        linear-gradient(180deg, var(--ubiq-cream) 0%, var(--ubiq-lilac) 60%, var(--ubiq-cream-2) 100%);
 }
 
 .heroGlow {
@@ -137,7 +137,7 @@
     right: -60px;
     width: 720px;
     height: 560px;
-    background: radial-gradient(circle, rgba(196, 79, 224, 0.08), transparent 62%);
+    background: radial-gradient(circle, rgba(245, 192, 122, 0.14), transparent 62%);
     filter: blur(22px);
     pointer-events: none;
     z-index: 0;
@@ -180,7 +180,7 @@
 }
 
 .meshNode {
-    fill: #8b5cf6;
+    fill: #7b2cbf;
 }
 
 .meshHalo {
@@ -239,7 +239,7 @@
     gap: 8px;
     padding: 12px 26px;
     border-radius: 100px;
-    background: #111111;
+    background: var(--ubiq-btn);
     color: #ffffff;
     font-size: 0.9rem;
     font-weight: 600;
@@ -247,9 +247,8 @@
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 .heroPrimary:hover {
-    background: #000;
+    background: var(--ubiq-btn-hover);
     transform: translateY(-2px);
-    box-shadow: 0 14px 32px rgba(110, 91, 242, 0.32);
 }
 
 .heroSecondary {
@@ -331,8 +330,8 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #6e5bf2;
-    box-shadow: 0 0 0 0 rgba(110, 91, 242, 0.5);
+    background: #7b2cbf;
+    box-shadow: 0 0 0 0 rgba(123, 44, 191, 0.5);
     animation: livePulse 1.8s ease-out infinite;
 }
 @keyframes livePulse {
@@ -440,7 +439,7 @@
 /* ============================================================
  * WHO WE ARE
  * ============================================================ */
-.story { background: #ffffff; }
+.story { background: var(--ubiq-cream); }
 
 .split {
     display: grid;
@@ -477,7 +476,7 @@
 /* ============================================================
  * POWERED BY UNNTANGLE TECHNOLOGIES
  * ============================================================ */
-.parent { background: #f8f8f8; }
+.parent { background: var(--ubiq-cream-2); }
 
 .lineage {
     display: flex;
@@ -533,7 +532,7 @@
 /* ============================================================
  * INNOVATION JOURNEY — horizontal timeline
  * ============================================================ */
-.journey { background: #ffffff; }
+.journey { background: var(--ubiq-cream); }
 
 .signal {
     position: relative;
@@ -574,7 +573,7 @@
     border-radius: 50%;
     background: #111418;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 0 4px #ffffff;
+    box-shadow: 0 0 0 4px var(--ubiq-cream);
     z-index: 2;
 }
 .mNode::after {
@@ -651,7 +650,7 @@
 /* ============================================================
  * PHILOSOPHY — cards
  * ============================================================ */
-.philosophy { background: #f8f8f8; }
+.philosophy { background: var(--ubiq-cream-2); }
 
 /* asymmetric bento */
 .philBento {
@@ -680,7 +679,6 @@
 .philCard:hover {
     transform: translateY(-5px);
     border-color: rgba(139, 92, 246, 0.4);
-    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
 }
 
 .philIndex {
@@ -726,7 +724,7 @@
 
 /* lead / feature tile */
 .philFeature {
-    background: #fbfaff;
+    background: #f8f2fd;
     border-color: rgba(139, 92, 246, 0.22);
 }
 .philFeature .philIndex { color: rgba(15, 23, 42, 0.06); }
@@ -793,7 +791,7 @@
  * INTEGRATION APPROACH — dark control room
  * ============================================================ */
 .approach {
-    background: #0b0b14;
+    background: var(--ubiq-night);
     overflow: hidden;
 }
 
@@ -804,7 +802,7 @@
     transform: translateX(-50%);
     width: 900px;
     height: 520px;
-    background: radial-gradient(ellipse at center, rgba(110, 91, 242, 0.28), transparent 65%);
+    background: radial-gradient(ellipse at center, rgba(123, 44, 191, 0.34), transparent 65%);
     filter: blur(30px);
     pointer-events: none;
     z-index: 0;
@@ -843,7 +841,7 @@
     height: 100%;
     background: var(--ubiq-gradient);
     border-radius: 2px;
-    box-shadow: 0 0 14px rgba(196, 79, 224, 0.6);
+    box-shadow: 0 0 14px rgba(157, 78, 221, 0.6);
 }
 
 .flowGrid {
@@ -867,7 +865,7 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: #14141f;
+    background: var(--ubiq-night-2);
     border: 1px solid rgba(255, 255, 255, 0.14);
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 18px;
@@ -892,7 +890,7 @@
     margin-bottom: 6px;
     transition: color 0.3s ease;
 }
-.flowNodeOn .flowNum { color: #b9a6ff; }
+.flowNodeOn .flowNum { color: var(--ubiq-lavender); }
 
 .flowLabel {
     display: block;
@@ -944,7 +942,7 @@
 /* ============================================================
  * ECOSYSTEM
  * ============================================================ */
-.ecosystem { background: #f8f8f8; }
+.ecosystem { background: var(--ubiq-cream-2); }
 
 .ecoGrid {
     display: grid;
@@ -966,7 +964,6 @@
 .ecoCard:hover {
     transform: translateY(-5px);
     border-color: rgba(139, 92, 246, 0.4);
-    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
 }
 
 .ecoCat {
@@ -994,7 +991,7 @@
 /* ============================================================
  * WHY uBIQ
  * ============================================================ */
-.why { background: #ffffff; }
+.why { background: var(--ubiq-cream); }
 
 .whyList {
     list-style: none;
@@ -1014,7 +1011,7 @@
     color: #2b3138;
     padding: 16px 18px;
     border-radius: 14px;
-    background: #f8f8f8;
+    background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
@@ -1039,7 +1036,7 @@
 /* ============================================================
  * CTA
  * ============================================================ */
-.ctaSection { background: #f8f8f8; }
+.ctaSection { background: var(--ubiq-cream-2); }
 
 .ctaBand {
     position: relative;
@@ -1048,7 +1045,7 @@
     border: 1px solid rgba(139, 92, 246, 0.18);
     background:
         radial-gradient(700px 320px at 50% 0%, rgba(139, 92, 246, 0.08), transparent 72%),
-        linear-gradient(180deg, #ffffff 0%, #f7f5fc 100%);
+        linear-gradient(180deg, #ffffff 0%, var(--ubiq-lilac) 100%);
     padding: 66px 32px;
     text-align: center;
 }
@@ -1100,7 +1097,7 @@
     gap: 8px;
     padding: 12px 26px;
     border-radius: 100px;
-    background: #111111;
+    background: var(--ubiq-btn);
     color: #ffffff;
     font-size: 0.9rem;
     font-weight: 600;
@@ -1108,9 +1105,8 @@
     transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 .ctaPrimary:hover {
-    background: #000;
+    background: var(--ubiq-btn-hover);
     transform: translateY(-2px);
-    box-shadow: 0 14px 32px rgba(110, 91, 242, 0.32);
 }
 
 .ctaSecondary {

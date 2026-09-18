@@ -208,7 +208,6 @@ const fadeVisual: Variants = {
 };
 
 export default function UbiqSolutionsPage() {
-    let idx = -1; // global index for alternating layout
     return (
         <>
             {/* ---------------- HERO ---------------- */}
@@ -253,7 +252,12 @@ export default function UbiqSolutionsPage() {
             </section>
 
             {/* ---------------- GROUPS ---------------- */}
-            {groups.map((group) => (
+            {groups.map((group, groupIndex) => {
+                const groupStartIndex = groups
+                    .slice(0, groupIndex)
+                    .reduce((total, previousGroup) => total + previousGroup.solutions.length, 0);
+
+                return (
                 <section key={group.id} id={group.id} className={styles.group}>
                     <div className={styles.inner}>
                         <motion.div
@@ -267,8 +271,8 @@ export default function UbiqSolutionsPage() {
                             <p className={styles.groupIntro}>{group.intro}</p>
                         </motion.div>
 
-                        {group.solutions.map((s) => {
-                            idx += 1;
+                        {group.solutions.map((s, solutionIndex) => {
+                            const idx = groupStartIndex + solutionIndex;
                             const Icon = s.icon;
                             const reverse = idx % 2 === 1;
                             return (
@@ -316,7 +320,8 @@ export default function UbiqSolutionsPage() {
                         })}
                     </div>
                 </section>
-            ))}
+                );
+            })}
 
             {/* ---------------- CTA ---------------- */}
             <section className={`${styles.section} ${styles.ctaSection}`}>

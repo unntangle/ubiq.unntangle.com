@@ -34,7 +34,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 const dmSans = DM_Sans({
     variable: "--font-outfit",
     subsets: ["latin"],
-    weight: ["400", "500", "600", "700", "800", "900"],
+    weight: ["300", "400", "500", "600", "700", "800", "900"],
     display: "swap",
 });
 
@@ -50,8 +50,8 @@ export const viewport: Viewport = {
     initialScale: 1,
     maximumScale: 5,
     themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-        { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+        { media: "(prefers-color-scheme: light)", color: "#faf7f2" },
+        { media: "(prefers-color-scheme: dark)", color: "#140b1f" },
     ],
 };
 
@@ -117,8 +117,6 @@ export const metadata: Metadata = {
         description:
             "Intelligent spaces, seamless experiences. Automation for homes, workplaces and commercial environments.",
         images: ["/images/hero.png"],
-        creator: "@unntangle",
-        site: "@unntangle",
     },
     icons: {
         icon: [{ url: "/uBIQ/uBIQ-logo.webp", type: "image/webp" }],
@@ -169,6 +167,10 @@ const organizationJsonLd = {
     description:
         "uBIQ is Unntangle's smart space automation brand — design, integration and support of intelligent automation for homes, workplaces and commercial spaces.",
     foundingDate: "2023",
+    sameAs: [
+        "https://www.instagram.com/ubiq_automation/",
+        "https://www.facebook.com/people/UBIQ-Automation/61594209613014/",
+    ],
     parentOrganization: {
         "@type": "Organization",
         name: "Unntangle",

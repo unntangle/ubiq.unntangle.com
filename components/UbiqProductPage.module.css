@@ -70,17 +70,16 @@
     gap: 8px;
     padding: 12px 26px;
     border-radius: 100px;
-    background: #111111;
+    background: var(--accentGrad, var(--ubiq-btn));
     color: #fff;
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, filter 0.25s ease;
 }
 .primaryCta:hover {
-    background: #000;
+    filter: brightness(0.9);
     transform: translateY(-2px);
-    box-shadow: 0 14px 32px var(--accentSoft);
 }
 
 .secondaryCta {
@@ -107,7 +106,7 @@
     overflow: hidden;
     background:
         radial-gradient(900px 480px at 78% -8%, var(--accentSoft), transparent 70%),
-        linear-gradient(180deg, #ffffff 0%, var(--tint) 70%, #ffffff 100%);
+        linear-gradient(180deg, var(--ubiq-cream) 0%, var(--tint) 70%, var(--ubiq-cream) 100%);
 }
 
 .heroGlow {
@@ -540,7 +539,7 @@
 /* ============================================================
  * STATEMENT
  * ============================================================ */
-.statementSection { background: #fff; padding-top: 30px; padding-bottom: 30px; }
+.statementSection { background: var(--ubiq-cream); padding-top: 30px; padding-bottom: 30px; }
 .statement {
     max-width: 880px;
     margin: 0 auto;
@@ -556,7 +555,7 @@
 /* ============================================================
  * FEATURES
  * ============================================================ */
-.features { background: #f8f8f8; }
+.features { background: var(--ubiq-cream-2); }
 .featureGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -586,7 +585,6 @@
 .featureCard:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
-    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
 }
 .featureCard:hover::before { transform: scaleX(1); }
 
@@ -615,7 +613,7 @@
 /* ============================================================
  * HOW IT WORKS (dark)
  * ============================================================ */
-.how { background: #0b0b14; overflow: hidden; }
+.how { background: var(--ubiq-night); overflow: hidden; }
 .howGlow {
     position: absolute;
     top: -10%;
@@ -688,7 +686,7 @@
 /* ============================================================
  * SHOWCASE
  * ============================================================ */
-.showcase { background: #fff; }
+.showcase { background: var(--ubiq-cream); }
 .showRow {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -750,7 +748,7 @@
 /* ============================================================
  * STATS
  * ============================================================ */
-.statsSection { background: #f8f8f8; }
+.statsSection { background: var(--ubiq-cream-2); }
 .statRow {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -784,7 +782,7 @@
 /* ============================================================
  * ECOSYSTEM CROSS-LINKS
  * ============================================================ */
-.eco { background: #fff; }
+.eco { background: var(--ubiq-cream); }
 .ecoGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -796,7 +794,7 @@
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    background: #f8f8f8;
+    background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.07);
     border-radius: 20px;
     padding: 30px 28px;
@@ -806,7 +804,6 @@
     transform: translateY(-5px);
     border-color: var(--accent);
     background: #fff;
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
 }
 .ecoIcon {
     display: inline-flex;
@@ -851,7 +848,7 @@
 /* ============================================================
  * CTA
  * ============================================================ */
-.ctaSection { background: #f8f8f8; }
+.ctaSection { background: var(--ubiq-cream-2); }
 .ctaBand {
     position: relative;
     overflow: hidden;

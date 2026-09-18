@@ -2,7 +2,7 @@
 
 .section {
     width: 100%;
-    background: #ffffff;
+    background: var(--ubiq-cream);
     display: block;
     padding: 110px 24px;
     box-sizing: border-box;
@@ -77,13 +77,12 @@
 .card:hover {
     transform: translateY(-5px);
     border-color: rgba(139, 92, 246, 0.5);
-    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
 }
 
 .media {
     position: relative;
     height: 158px;
-    background-color: #ece8f6;
+    background-color: #efe6f8;
     background-size: cover;
     background-position: center;
 }
@@ -173,7 +172,7 @@
 }
 
 .nameU {
-    color: #111418;
+    color: var(--ubiq-ink);
 }
 
 .nameWord {

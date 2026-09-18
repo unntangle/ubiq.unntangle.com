@@ -100,7 +100,7 @@ export default function UbiqNodeField() {
                     if (d2 < LINK_DIST * LINK_DIST) {
                         const d = Math.sqrt(d2);
                         const a = (1 - d / LINK_DIST) * 0.18;
-                        ctx.strokeStyle = `rgba(139, 92, 246, ${a})`;
+                        ctx.strokeStyle = `rgba(123, 44, 191, ${a})`;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -119,7 +119,7 @@ export default function UbiqNodeField() {
                     if (d2 < MOUSE_RADIUS * MOUSE_RADIUS) {
                         const d = Math.sqrt(d2) || 1;
                         const a = (1 - d / MOUSE_RADIUS) * 0.4;
-                        ctx.strokeStyle = `rgba(196, 79, 224, ${a})`;
+                        ctx.strokeStyle = `rgba(157, 78, 221, ${a})`;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(mouse.x, mouse.y);
@@ -132,7 +132,7 @@ export default function UbiqNodeField() {
             // nodes
             for (const n of nodes) {
                 ctx.beginPath();
-                ctx.fillStyle = 'rgba(139, 92, 246, 0.5)';
+                ctx.fillStyle = 'rgba(123, 44, 191, 0.5)';
                 ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
                 ctx.fill();
             }
@@ -145,8 +145,8 @@ export default function UbiqNodeField() {
                 const x = a.x + (b.x - a.x) * p.t;
                 const y = a.y + (b.y - a.y) * p.t;
                 const grad = ctx.createRadialGradient(x, y, 0, x, y, 6);
-                grad.addColorStop(0, 'rgba(196, 79, 224, 0.9)');
-                grad.addColorStop(1, 'rgba(196, 79, 224, 0)');
+                grad.addColorStop(0, 'rgba(245, 192, 122, 0.9)');
+                grad.addColorStop(1, 'rgba(245, 192, 122, 0)');
                 ctx.fillStyle = grad;
                 ctx.beginPath();
                 ctx.arc(x, y, 6, 0, Math.PI * 2);

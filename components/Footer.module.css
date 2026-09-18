@@ -1,18 +1,24 @@
-/* Wrapper that fills the area behind the footer's rounded top corners with cream,
-   matching the FAQ section above. The footer's curve cuts into this wrapper, so cream
-   is what's revealed at the corners regardless of body or page background. */
+/* Footer — uBIQ poster theme: aubergine "movie night" panel with
+   lavender accents. The wrapper fills the area behind the rounded top
+   corners with the warm cream page canvas. */
 .footerWrapper {
-    background: #f5f1eb;
+    background: var(--ubiq-cream, #faf7f2);
 }
 
 .footer {
-    background-color: #0f141a;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(900px 420px at 85% 0%, rgba(123, 44, 191, 0.32), transparent 70%),
+        radial-gradient(700px 360px at 5% 100%, rgba(245, 192, 122, 0.08), transparent 70%),
+        var(--ubiq-night, #140b1f);
     color: white;
-    padding: 60px 0 30px;
-    border-radius: 60px 60px 0 0;
+    padding: 44px 0 22px;
+    border-radius: 48px 48px 0 0;
 }
 
 .container {
+    position: relative;
     max-width: 1280px;
     width: 90%;
     margin: 0 auto;
@@ -22,14 +28,54 @@
 .topBar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 60px;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 36px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brand {
+    max-width: 420px;
 }
 
 .footerLogo {
     height: auto;
-    width: 170px;
+    width: 128px;
     display: block;
+    /* Logo artwork is dark-on-transparent; render it white on the night panel. */
+    filter: brightness(0) invert(1);
+}
+
+.tagline {
+    font-family: var(--font-title), sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    color: #d9d0e6;
+    margin-top: 12px;
+    max-width: 380px;
+}
+
+.topCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 12px 24px;
+    border-radius: 100px;
+    background: var(--ubiq-btn, linear-gradient(135deg, #8e3fd6 0%, #6a1fb0 100%));
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.topCta:hover {
+    background: var(--ubiq-btn-hover, linear-gradient(135deg, #7b2cbf 0%, #4a1180 100%));
+    transform: translateY(-2px);
 }
 
 .logoLink {
@@ -39,22 +85,23 @@
 
 /* Links Grid */
 .linksGrid {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 40px;
-    margin-bottom: 60px;
+    margin-bottom: 0;
     width: 100%;
 }
 
 .column {
-    min-width: 180px;
+    min-width: 0;
 }
 
 .column h4 {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
     color: white;
     font-family: var(--font-title), sans-serif;
 }
@@ -63,10 +110,10 @@
     position: relative;
     display: table;
     /* Shrink-wrap to text width */
-    color: #a1a1aa;
+    color: #b3a9c2;
     text-decoration: none;
     font-size: 14px;
-    margin-bottom: 12px;
+    margin-bottom: 9px;
     transition: color 0.3s ease;
 }
 
@@ -77,13 +124,12 @@
     left: 0;
     width: 0;
     height: 1px;
-    background-color: #00d1ff;
-    /* Neon Blue */
+    background-color: var(--ubiq-lavender, #cfa8ff);
     transition: width 0.3s ease;
 }
 
 .column a:hover {
-    color: #00d1ff;
+    color: var(--ubiq-lavender, #cfa8ff);
 }
 
 .column a:hover::after {
@@ -99,12 +145,11 @@
 
 .phoneNumbers a {
     display: table !important;
-    /* Changed from inline-block for precise underline width */
     margin-bottom: 0 !important;
 }
 
 .phoneNumbers span {
-    color: #a1a1aa;
+    color: #b3a9c2;
     margin: 0 8px;
 }
 
@@ -113,7 +158,7 @@
 }
 
 .column p {
-    color: #a1a1aa;
+    color: #b3a9c2;
     font-size: 14px;
     margin-bottom: 12px;
     line-height: 1.5;
@@ -123,7 +168,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 9px;
 }
 
 .socialLink {
@@ -141,19 +186,23 @@
     line-height: 1.6;
 }
 
-/* Back to Top */
+/* Back to Top — tucked into the empty bottom-right of the link grid
+   (under the short "Follow us" column) so it doesn't add its own row. */
 .backToTop {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 60px;
+    margin-top: -44px;
+    margin-bottom: 28px;
+    pointer-events: none;
 }
 
 .backToTop button {
+    pointer-events: auto;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #a1a1aa;
-    width: 48px;
-    height: 48px;
+    border: 1px solid rgba(207, 168, 255, 0.35);
+    color: #cfa8ff;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -164,16 +213,15 @@
 
 .backToTop button:hover {
     color: white;
-    background: #00d1ff;
-    border-color: #00d1ff;
+    background: var(--ubiq-btn, linear-gradient(135deg, #8e3fd6 0%, #6a1fb0 100%));
+    border-color: transparent;
     transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0, 209, 255, 0.4);
 }
 
 /* Bottom Bar */
 .bottomBar {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
 .splitRow {
@@ -190,7 +238,7 @@
 
 .legalLinks a {
     position: relative;
-    color: #a1a1aa;
+    color: #b3a9c2;
     font-size: 12px;
     text-decoration: none;
     margin-bottom: 0px;
@@ -204,12 +252,12 @@
     left: 0;
     width: 0;
     height: 1px;
-    background-color: #00d1ff;
+    background-color: var(--ubiq-lavender, #cfa8ff);
     transition: width 0.3s ease;
 }
 
 .legalLinks a:hover {
-    color: #00d1ff;
+    color: var(--ubiq-lavender, #cfa8ff);
 }
 
 .legalLinks a:hover::after {
@@ -217,19 +265,25 @@
 }
 
 .copyright {
-    color: #71717a;
+    color: #8a7f99;
     font-size: 12px;
     margin-bottom: 0;
 }
 
 .accent {
-    color: #00d1ff;
+    color: var(--ubiq-lavender, #cfa8ff);
     font-weight: 600;
+    text-decoration: none;
+}
+
+.accent:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 @media (max-width: 1024px) {
     .linksGrid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 40px;
     }
 
@@ -248,9 +302,13 @@
         grid-template-columns: 1fr;
     }
 
+    .backToTop {
+        margin-top: 24px;
+    }
+
     .topBar {
         flex-direction: column;
-        gap: 20px;
+        gap: 24px;
         align-items: flex-start;
     }
 }
